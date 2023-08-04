@@ -7,6 +7,8 @@ body {
     font-family: 'Poppins', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--background);
+    color: var(--white);
 }
 
 code {
@@ -46,6 +48,7 @@ button {
     padding: 0;
     border: none;
     cursor: pointer;
+    box-shadow: var(--button-shadow);
 }
 address {
     font-style: normal;
