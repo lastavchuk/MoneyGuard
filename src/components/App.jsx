@@ -1,3 +1,10 @@
+import Statistics from './Statistics/Statistics';
+
 export const App = () => {
-    return <h1>Money Guard my</h1>;
+    return (
+        <div>
+            <h1>Money Guard</h1>
+            <Statistics />
+        </div>
+    );
 };
