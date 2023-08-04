@@ -1,4 +1,5 @@
 @import 'modern-normalize';
+@import './stylesheet/vars.css';
 
 body {
     margin: 0;
