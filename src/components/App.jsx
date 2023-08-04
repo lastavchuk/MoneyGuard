@@ -1,13 +1,10 @@
 import Home from '../pages/Home';
-
 import PrivateRoute from 'guards/PrivateRoute';
 import PublicRoute from 'guards/PublicRoute';
 import SharedLayout from 'layout/SharedLayout';
 // import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
-// import { loginUserThunk } from 'redux/auth/userThunks';
-// import { fetchAllTransactionsThunk } from 'redux/finance/financeThunks';
-import HomeTab from './HomeTab/HomeTab';
+// import { loginUserThunk} from '../redux/auth/userThunks';
 
 export const App = () => {
     // const dispatch = useDispatch();
