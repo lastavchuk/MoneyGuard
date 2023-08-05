@@ -21,11 +21,9 @@ export const Modal = ({ children, closeReducer }) => {
       dispatch(closeReducer());
     }
   };
-
   const handleCloseModal = () => {
     dispatch(closeReducer());
   };
-
   return createPortal(
     <Backdrop onClick={onCloseModal}>
       <ModalStyled>
