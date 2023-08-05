@@ -5,27 +5,27 @@ export const StyledTransactionsList = styled.tbody`
 
     tr {
         position: relative;
-        width: 700px;
         height: 53px;
     }
 
     tr:not(:last-child)::after {
         content: '';
         position: absolute;
-        left: 10px;
+        left: 0;
         right: 0;
         bottom: -1px;
         height: 1px;
-       border-bottom: 1px solid white;
-       opacity: 0.2;
+        border-bottom: 1px solid white;
+        opacity: 0.2;
     }
 
     td {
         text-align: left;
+        padding: 0;
     }
 
     td:first-child {
-        padding-left: 15px;
+        padding-left: 20px;
     }
 
     td:nth-child(2) {
@@ -48,7 +48,7 @@ export const StyledTransactionsList = styled.tbody`
         color: var(--dashboard-text);
         text-align: right;
     }
-    
+
     button.edit {
         width: 14px;
         height: 14px;
@@ -63,5 +63,15 @@ export const StyledTransactionsList = styled.tbody`
         height: 29px;
         border-radius: 20px;
         box-shadow: var(--button-shadow);
+    }
+
+    @media only screen and (min-width: 1280px) {
+        tr:not(:last-child)::after {
+            left: 10px;
+            right: 0;
+        }
+        td:last-child {
+        padding-right: 10px;
+    }
     }
 `;

@@ -1,18 +1,20 @@
 import styled from 'styled-components';
 
 export const StyledHomeTab = styled.div`
-min-width: 800px;
-padding: 46px 16px 46px 69px;
+    width: 100%;
 
     div {
-        max-height: 363px;
+        display: block;
+        margin: 0 auto;
+        max-height: 318px;
         overflow: scroll;
+        width: 704px;
     }
-
+    
     table {
+        width: 100%;
         border-spacing: 0px;
         border-collapse: collapse;
-        min-width: 715px;
     }
 
     thead {
@@ -53,10 +55,10 @@ padding: 46px 16px 46px 69px;
     th:last-child {
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
-        width: 130px;
+        width: 141px;
     }
 
-    button.add{
+    button.add {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -69,5 +71,19 @@ padding: 46px 16px 46px 69px;
         border-radius: 50%;
         font-size: 30px;
         color: var(--white);
+    }
+
+    @media only screen and (min-width: 1280px) {
+        width: 800px;
+        padding: 46px 16px 46px 69px;
+
+        div {
+            margin: 0;
+            min-width: 715px;
+        }
+
+        th:last-child {
+            width: 130px;
+        }
     }
 `;
