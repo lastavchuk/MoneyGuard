@@ -4,9 +4,9 @@ import { BsPlusLg } from 'react-icons/bs';
 import styled from 'styled-components';
 
 export const ModalTransactionTitle = styled.h2`
-  font-size: ${({ customName }) => customName.fontSizes.xl};
-  font-weight: ${({ customName }) => customName.fontWeights.regular};
-  margin-bottom: ${({ customName }) => customName.spacing(10)};
+  font-size: ${({ theme }) => theme.fontSizes.xl};
+  font-weight: ${({ theme }) => theme.fontWeights.regular};
+  margin-bottom: ${({ theme }) => theme.spacing(10)};
 `;
 
 export const ModalAddWrapper = styled.div`
@@ -23,13 +23,13 @@ export const StyledForm = styled(Form)`
 export const RadioWrapperChoose = styled.div`
   display: flex;
   align-items: center;
-  gap: ${({ customName }) => customName.spacing(5)};
+  gap: ${({ theme }) => theme.spacing(5)};
 `;
 
 export const RadioWrapper = styled.span`
-  width: ${({ customName }) => customName.spacing(20)};
-  height: ${({ customName }) => customName.spacing(10)};
-  border-radius: ${({ customName }) => customName.spacing(7.5)};
+  width: ${({ theme }) => theme.spacing(20)};
+  height: ${({ theme }) => theme.spacing(10)};
+  border-radius: ${({ theme }) => theme.spacing(7.5)};
   background-color: white;
   display: flex;
   position: relative;
@@ -56,8 +56,8 @@ export const RoundedButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: ${({ customName }) => customName.spacing(11)};
-  height: ${({ customName }) => customName.spacing(11)};
+  width: ${({ theme }) => theme.spacing(11)};
+  height: ${({ theme }) => theme.spacing(11)};
   border-radius: 50%;
   background-color: ${({ type }) => (type === 'true' ? '#ffb627' : '#ff868d')};
   box-shadow: 0px 0px 7px 5px rgba(255, 182, 39, 0.33);
@@ -67,12 +67,12 @@ export const RoundedButton = styled.div`
 
   transform: ${({ type }) =>
     type === 'true' ? 'translateX(0) rotateY(180deg)' : 'translateX(100%) '};
-  transition: ${({ customName }) => customName.transitions.color};
+  transition: ${({ theme }) => theme.transitions.color};
 `;
 
 export const PlusButton = styled(BsPlusLg)`
-  width: ${({ customName }) => customName.spacing(7)};
-  height: ${({ customName }) => customName.spacing(7)};
+  width: ${({ theme }) => theme.spacing(7)};
+  height: ${({ theme }) => theme.spacing(7)};
 `;
 export const ExpenseSpan = styled.span`
   color: ${({ isSelected }) =>
@@ -80,8 +80,8 @@ export const ExpenseSpan = styled.span`
 `;
 
 export const MinusButton = styled(HiOutlineMinus)`
-  width: ${({ customName }) => customName.spacing(7)};
-  height: ${({ customName }) => customName.spacing(7)};
+  width: ${({ theme }) => theme.spacing(7)};
+  height: ${({ theme }) => theme.spacing(7)};
 `;
 
 export const InputWrapper = styled.div`
@@ -96,13 +96,13 @@ export const InputWrapper = styled.div`
 `;
 
 export const StyledField = styled(Field)`
-  height: ${({ customName }) => customName.spacing(10)};
+  height: ${({ theme }) => theme.spacing(10)};
   background-color: transparent;
   border: none;
   border-bottom: 1px solid currentColor;
-  color: ${({ customName }) => customName.colors.secondaryFont};
+  color: ${({ theme }) => theme.colors.secondaryFont};
   width: 100%;
-  padding: ${({ customName }) => customName.spacing(2)};
+  padding: ${({ theme }) => theme.spacing(2)};
   font-weight: ${({ weight }) => weight};
   appearance: none;
   &:focus-visible {

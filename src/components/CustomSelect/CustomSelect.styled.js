@@ -11,10 +11,12 @@ export const selectStyles = {
     ...styles,
     width: '280px',
     height: '50px',
-    color: '#FBFBFB',
-    borderRadius: '8px',
     padding: '12px 20px',
     fontSize: '16px',
+    color: '#FBFBFB',
+    backgroundColor: 'rgba(74, 86, 226, 0.10)',
+    border: '1px solid rgba(255, 255, 255, 0.60)',
+    borderRadius: '8px',
     cursor: 'pointer',
     [breakpoints.tablet]: {
       width: '160px',
@@ -38,6 +40,14 @@ export const selectStyles = {
     top: '90%',
     width: '280px',
     height: '157px',
+    borderRadius: '8px',
+    background: `linear-gradient(
+      360deg,
+      rgba(83, 61, 186, 0.7) 0%,
+      rgba(80, 48, 154, 0.7) 35.94%,
+      rgba(106, 70, 165, 0.52) 61.04%,
+      rgba(133, 93, 175, 0.13) 100%
+    )`,
     backdropFilter: `blur(50px)`,
     overflow: 'auto',
     [breakpoints.tablet]: {
@@ -84,12 +94,6 @@ export const selectStyles = {
   }),
 };
 
-export const SelectIcon = styled(SlArrowDown)`
-  color: ${({ theme }) => theme.colors.primaryFont};
-  width: 30px;
-  height: 20px;
-`;
-
 export const selectStylesCategory = {
   ...selectStyles,
   container: styles => ({
@@ -99,6 +103,13 @@ export const selectStylesCategory = {
   control: styles => ({
     ...styles,
     width: '100%',
+    height: '35px',
+    padding: '8px',
+    fontSize: '18px',
+    color: '#FBFBFB',
+    display: 'flex',
+    justifyContent: 'space-between',
+    textAlign: 'left',
     border: 0,
     borderBottom: '1px solid rgba(255, 255, 255, 0.60)',
     backgroundColor: 'transparent',
@@ -111,6 +122,14 @@ export const selectStylesCategory = {
     top: '90%',
     width: '100%',
     height: '300px',
+    borderRadius: '8px',
+    background: `linear-gradient(
+      360deg,
+      rgba(83, 61, 186, 0.7) 0%,
+      rgba(80, 48, 154, 0.7) 35.94%,
+      rgba(106, 70, 165, 0.52) 61.04%,
+      rgba(133, 93, 175, 0.13) 100%
+    )`,
     backdropFilter: `blur(50px)`,
     overflow: 'auto',
   }),
@@ -135,4 +154,8 @@ export const selectStylesCategory = {
   }),
 };
 
-
+export const SelectIcon = styled(SlArrowDown)`
+  color: ${({ theme }) => theme.colors.primaryFont};
+  width: 30px;
+  height: 20px;
+`;
