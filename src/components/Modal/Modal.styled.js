@@ -21,33 +21,34 @@ export const ModalStyled = styled.div`
   );
   width: 100vw;
   min-height: 110vh;
-  border-radius: ${({ customName }) => customName.spacing(2)};
+  border-radius: ${({ theme }) => theme.spacing(2)};
   padding: 40px 72px;
 
   @media screen and (min-width: 768px) {
-    width: ${({ customName }) => customName.spacing(135)};
-    min-height: ${({ customName }) => customName.spacing(145)};
-    position: absolute;
+    width: ${({ theme }) => theme.spacing(135)};
+    min-height: ${({ theme }) => theme.spacing(145)};
     top: 50%;
     left: 50%;
+    position: absolute;
     transform: translate(-50%, -50%);
   }
 `;
 
 export const IconCloseModal = styled.div`
-  width: ${({ customName }) => customName.spacing(7)};
-  height: ${({ customName }) => customName.spacing(7)};
+  width: ${({ theme }) => theme.spacing(7)};
+  height: ${({ theme }) => theme.spacing(7)};
+
   position: absolute;
-  top: ${({ customName }) => customName.spacing(5)};
-  right: ${({ customName }) => customName.spacing(5)};
+  top: ${({ theme }) => theme.spacing(5)};
+  right: ${({ theme }) => theme.spacing(5)};
   &:hover {
     cursor: pointer;
   }
 `;
 
 export const ExitModalBtn = styled(VscClose)`
-  width: ${({ customName }) => customName.spacing(7.4)};
-  height: ${({ customName }) => customName.spacing(7.4)};
+  width: ${({ theme }) => theme.spacing(7.4)};
+  height: ${({ theme }) => theme.spacing(7.4)};
   &:hover {
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.4);
