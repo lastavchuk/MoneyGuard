@@ -77,7 +77,7 @@ export const ModalAddTransaction = () => {
           onSubmit={handleSubmit}
           initialValues={initialValues}
         >
-          <StyledForm>
+        <StyledForm>
       <RadioWrapperChoose>
         <IncomeSpan isSelected={selectedType}>Income</IncomeSpan>
         <RadioWrapper onClick={changeTypeOfTransaction}>

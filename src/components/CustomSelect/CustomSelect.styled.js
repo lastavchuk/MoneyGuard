@@ -1,5 +1,6 @@
-import styled from 'styled-components';
 import { SlArrowDown } from 'react-icons/sl';
+import styled from 'styled-components';
+
 
 const breakpoints = {
   tablet: `@media only screen and (min-width: 768px)`,
@@ -14,10 +15,10 @@ export const selectStyles = {
     padding: '12px 20px',
     fontSize: '16px',
     color: '#FBFBFB',
+    cursor: 'pointer',
     backgroundColor: 'rgba(74, 86, 226, 0.10)',
     border: '1px solid rgba(255, 255, 255, 0.60)',
     borderRadius: '8px',
-    cursor: 'pointer',
     [breakpoints.tablet]: {
       width: '160px',
     },
@@ -103,14 +104,14 @@ export const selectStylesCategory = {
   control: styles => ({
     ...styles,
     width: '100%',
-    height: '35px',
-    padding: '8px',
-    fontSize: '18px',
-    color: '#FBFBFB',
     display: 'flex',
     justifyContent: 'space-between',
-    textAlign: 'left',
+    fontSize: '18px',
+    color: '#FBFBFB',
     border: 0,
+    textAlign: 'left',
+    height: '35px',
+    padding: '8px',
     borderBottom: '1px solid rgba(255, 255, 255, 0.60)',
     backgroundColor: 'transparent',
     boxShadow: 'none',
@@ -156,6 +157,6 @@ export const selectStylesCategory = {
 
 export const SelectIcon = styled(SlArrowDown)`
   color: ${({ theme }) => theme.colors.primaryFont};
-  width: 30px;
   height: 20px;
+  width: 30px;
 `;

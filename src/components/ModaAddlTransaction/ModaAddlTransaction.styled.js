@@ -38,7 +38,6 @@ export const StyledInp = styled.input`
   display: none;
 `;
 
-
 export const StyledLabelWrapper = styled.span`
   display: inline-block;
   width: 50%;
