@@ -8,13 +8,13 @@ import Footer from 'components/Footer/Footer';
 function SharedLayout() {
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             <main>
                 <Suspense fallback={<Loader />}>
                     <Outlet />
                 </Suspense>
             </main>
-            <Footer />
+            {/* <Footer /> */}
         </>
     );
 }
