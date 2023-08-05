@@ -1,4 +1,4 @@
-import { UserSelect } from 'components/UserSelect/UserSelect'
+import { CustomSelect } from 'components/CustomSelect/CustomSelect';
 import { Button } from 'components/Button/Button';
 import { Formik } from 'formik';
 import { useEffect, useState } from 'react';
@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeModalAddTransaction } from 'redux/global/globalSlice';
 import { getTransactionsCategoriesThunk, addTransactionThunk } from 'redux/transaction/transactionOperations';
 import { selectCategories } from 'redux/transaction/transactionSelector';
-import { ButtonWrapper,  ExpenseSpan, IncomeSpan, MinusButton, ModalAddWrapper, ModalTransactionTitle, 
-PlusButton, RadioWrapper, RadioWrapperChoose, RoundedButton,  StyledLabelWrapper,  StyledForm } from './ModaAddlTransaction.styled';
+import { ButtonWrapper,  InputWrapper, ExpenseSpan, IncomeSpan, MinusButton, ModalAddWrapper, ModalTransactionTitle, 
+PlusButton, RadioWrapper, RadioWrapperChoose, RoundedButton,  StyledLabelWrapper, StyledField, StyledForm } from './ModaAddlTransaction.styled';
 import { useCategoriesType } from 'hooks/categoriesFilter';
 import { transactionsSchema } from 'services/validation/validationTransactions';
 import { FormError } from 'components/FormError/FormError';
@@ -90,12 +90,34 @@ export const ModalAddTransaction = () => {
         <ExpenseSpan isSelected={!selectedType}>Expense</ExpenseSpan>
       </RadioWrapperChoose>
       {!selectedType && (
-        <UserSelect
+        <CustomSelect
           options={selectOptionsData}
           nameOfSelect="category"
           onChange={handleChangeSelect}
         />
       )}
+      <InputWrapper>
+        <StyledField
+          type="number"
+          name="amount"
+          placeholder="0.00"
+          weight="600"
+          required
+          autoComplete="off"
+          autoFocus={true}
+        />
+        <StyledField
+          autoComplete="off"
+          type="date"
+          name="transactionDate"
+        />
+      </InputWrapper>
+      <StyledField
+        autoComplete="off"
+        type="text"
+        name="comment"
+        placeholder="Comment"
+      />
       <ButtonWrapper>
         <FormError name="amount" />
         <Button text="ADD" type="submit" />
