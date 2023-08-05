@@ -1,16 +1,28 @@
-// import HomeTab from "./HomeTab/HomeTab";
-
+import Home from '../pages/Home';
 import PrivateRoute from 'guards/PrivateRoute';
 import PublicRoute from 'guards/PublicRoute';
 import SharedLayout from 'layout/SharedLayout';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
-import { loginUserThunk } from 'redux/auth/userThunks';
-import { fetchAllTransactionsThunk } from 'redux/finance/financeThunks';
-import HomeTab from './HomeTab/HomeTab';
+import { refreshUserThunk } from 'redux/auth/userThunks';
+import { selectUserToken } from 'redux/selectors';
+import { useSelector} from "react-redux"
+// import { loginUserThunk} from '../redux/auth/userThunks';
+// import { fetchAllTransactionsThunk } from 'redux/finance/financeThunks';
+// import { getTransactionCategoriesThunk } from "redux/finance/financeThunks";
 
 export const App = () => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const token = useSelector(selectUserToken);
+
+    useEffect(() => {
+        if (!token) return;
+        dispatch(refreshUserThunk());
+        // dispatch(getTransactionCategoriesThunk());
+        // dispatch(fetchAllTransactionsThunk());
+    }, [dispatch, token]);
+
     // function foo1() {
     //     dispatch(
     //         loginUserThunk({
@@ -32,7 +44,8 @@ export const App = () => {
             <Route path="/" element={<SharedLayout />}>
                 <Route
                     index
-                    element={<PrivateRoute>{<HomeTab />}</PrivateRoute>}
+                    // element={<PrivateRoute>{<Home />}</PrivateRoute>}
+                    element={<Home/>}
                 />
                 <Route
                     path="statistic"

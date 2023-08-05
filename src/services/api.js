@@ -15,7 +15,6 @@ export const clearToken = () => {
 //=== User ===
 export async function loginUser(userData) {
     const { data } = await instance.post('/auth/sign-in', userData);
-    setToken(data.token);
     return data;
 }
 

@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { rootReducer } from './rootSlice';
 import { userReducer } from './auth/userSlice';
 import { financeReducer } from './finance/financeSlice';
+import { globalReducer } from './globalSlice';
 
 import {
     persistStore,
@@ -26,6 +27,7 @@ export const store = configureStore({
         user: persistReducer(userPersistConfig, userReducer),
         finance: financeReducer,
         root: rootReducer,
+        global: globalReducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({
