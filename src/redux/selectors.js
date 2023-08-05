@@ -7,3 +7,4 @@ export const selectUserIsAuth = state => state.user.isAuth;
 
 export const selectFinanceData = state => state.finance.data;
 export const selectFinanceTotalBalance = state => state.finance.totalBalance;
+export const selectCategories = state => state.finance.categories;

@@ -42,7 +42,6 @@ export async function createTransaction(transaction) {
 }
 export async function fetchAllTransactions() {
     const { data } = await instance.get('/transactions');
-    console.log(data);
     return data;
 }
 

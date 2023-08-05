@@ -10,6 +10,7 @@ import { selectUserToken } from 'redux/selectors';
 import { useSelector} from "react-redux"
 // import { loginUserThunk} from '../redux/auth/userThunks';
 import { fetchAllTransactionsThunk } from 'redux/finance/financeThunks';
+import { getTransactionCategoriesThunk } from "redux/finance/financeThunks";
 
 export const App = () => {
     const dispatch = useDispatch();
@@ -22,8 +23,9 @@ export const App = () => {
     useEffect(() => {
         if (!token) return;
         dispatch(refreshUserThunk());
+        dispatch(getTransactionCategoriesThunk());
+        dispatch(fetchAllTransactionsThunk());
     }, [dispatch, token]);
-    dispatch(fetchAllTransactionsThunk())
     // function foo1() {
     //     dispatch(
     //         loginUserThunk({

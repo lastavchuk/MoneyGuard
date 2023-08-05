@@ -1,8 +1,14 @@
 import styled from 'styled-components';
 
-export const StyledHomeTab = styled.table`
-    border-spacing: 0px;
-    border-collapse: collapse;
+export const StyledHomeTab = styled.div`
+    max-height: 363px;
+    overflow: scroll;
+    
+    table {
+        border-spacing: 0px;
+        border-collapse: collapse;
+        min-width: 715px;
+    }
 
     thead {
         height: 56px;
@@ -13,18 +19,35 @@ export const StyledHomeTab = styled.table`
     th {
         padding: 0;
         font-weight: 600;
+        text-align: left;
     }
-
-    th:nth-child(5) {
-        border-top-right-radius: 8px;
-        border-bottom-right-radius: 8px;
-    }
-
     th:first-child {
         border-top-left-radius: 8px;
         border-bottom-left-radius: 8px;
-        width: 119px !important;
         text-align: left;
         padding-left: 20px;
+        width: 91px;
+    }
+
+    th:nth-child(2) {
+        text-align: center;
+    }
+
+    th:nth-child(3) {
+        width: 146px;
+    }
+
+    th:nth-child(4) {
+        width: 135px;
+    }
+
+    th:nth-child(5) {
+        text-align: right;
+    }
+
+    th:last-child {
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+        width: 130px;
     }
 `;
