@@ -7,7 +7,7 @@ function Home() {
 const dispatch = useDispatch();
 
 useEffect(()=>{
-dispatch(fetchAllTransactionsThunk)
+dispatch(fetchAllTransactionsThunk())
 }, [dispatch]);
 
   return (

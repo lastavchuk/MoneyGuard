@@ -15,7 +15,6 @@ export const clearToken = () => {
 //=== User ===
 export async function loginUser(userData) {
     const { data } = await instance.post('/auth/sign-in', userData);
-    setToken(data.token);
     return data;
 }
 
@@ -43,6 +42,7 @@ export async function createTransaction(transaction) {
 }
 export async function fetchAllTransactions() {
     const { data } = await instance.get('/transactions');
+    console.log(data);
     return data;
 }
 
