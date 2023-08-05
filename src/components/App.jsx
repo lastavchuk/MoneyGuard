@@ -9,23 +9,20 @@ import { refreshUserThunk } from 'redux/auth/userThunks';
 import { selectUserToken } from 'redux/selectors';
 import { useSelector} from "react-redux"
 // import { loginUserThunk} from '../redux/auth/userThunks';
-import { fetchAllTransactionsThunk } from 'redux/finance/financeThunks';
-import { getTransactionCategoriesThunk } from "redux/finance/financeThunks";
+// import { fetchAllTransactionsThunk } from 'redux/finance/financeThunks';
+// import { getTransactionCategoriesThunk } from "redux/finance/financeThunks";
 
 export const App = () => {
     const dispatch = useDispatch();
-    const token = useSelector(selectUserToken)
+    const token = useSelector(selectUserToken);
 
-    // useEffect(()=>{
-    // }, [dispatch]);
-    
-    
     useEffect(() => {
         if (!token) return;
         dispatch(refreshUserThunk());
-        dispatch(getTransactionCategoriesThunk());
-        dispatch(fetchAllTransactionsThunk());
+        // dispatch(getTransactionCategoriesThunk());
+        // dispatch(fetchAllTransactionsThunk());
     }, [dispatch, token]);
+
     // function foo1() {
     //     dispatch(
     //         loginUserThunk({
@@ -47,7 +44,8 @@ export const App = () => {
             <Route path="/" element={<SharedLayout />}>
                 <Route
                     index
-                    element={<PrivateRoute>{<Home />}</PrivateRoute>}
+                    // element={<PrivateRoute>{<Home />}</PrivateRoute>}
+                    element={<Home/>}
                 />
                 <Route
                     path="statistic"

@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
 export const StyledHomeTab = styled.div`
-    max-height: 363px;
-    overflow: scroll;
-    
+min-width: 800px;
+padding: 46px 16px 46px 69px;
+
+    div {
+        max-height: 363px;
+        overflow: scroll;
+    }
+
     table {
         border-spacing: 0px;
         border-collapse: collapse;
@@ -49,5 +54,20 @@ export const StyledHomeTab = styled.div`
         border-top-right-radius: 8px;
         border-bottom-right-radius: 8px;
         width: 130px;
+    }
+
+    button.add{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+        width: 44px;
+        height: 44px;
+        background: var(--gradient-button);
+        border-radius: 50%;
+        font-size: 30px;
+        color: var(--white);
     }
 `;

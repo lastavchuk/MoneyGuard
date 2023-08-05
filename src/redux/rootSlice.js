@@ -39,5 +39,5 @@ const rootSlice = createSlice({
     },
 });
 
-export const { setError } = rootSlice.actions;
+export const { setError} = rootSlice.actions;
 export const rootReducer = rootSlice.reducer;
