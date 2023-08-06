@@ -1,7 +1,7 @@
 import Home from '../pages/Home';
 import PrivateRoute from 'guards/PrivateRoute';
 import PublicRoute from 'guards/PublicRoute';
-import SharedLayout from 'layout/SharedLayout';
+import SharedLayout from 'components/layout/SharedLayout';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
@@ -37,32 +37,31 @@ export const App = () => {
     // }
 
     return (
-        <Home/>
         // <>
         //     <h1 onClick={foo1}>login</h1>
         //     <h1 onClick={foo2}>All cat</h1>
         // </>
-        // <Routes>
-        //     <Route path="/" element={<SharedLayout />}>
-        //         <Route
-        //             index
-        //             // element={<PrivateRoute>{<Home />}</PrivateRoute>}
-        //             element={<Home/>}
-        //         />
-        //         <Route
-        //             path="statistic"
-        //             element={<PrivateRoute>{/* <Statistic /> */}</PrivateRoute>}
-        //         />
-        //         <Route
-        //             path="login"
-        //             element={<PublicRoute>{/* <Login /> */}</PublicRoute>}
-        //         />
-        //         <Route
-        //             path="register"
-        //             element={<PublicRoute>{/* <Register /> */}</PublicRoute>}
-        //         />
-        //     </Route>
-        //     <Route path="*" element={<Navigate to="/" replace />} />
-        // </Routes>
+        <Routes>
+            <Route path="/" element={<SharedLayout />}>
+                <Route
+                    index
+                    // element={<PrivateRoute>{<Home />}</PrivateRoute>}
+                    element={<Home/>}
+                />
+                <Route
+                    path="statistic"
+                    element={<PrivateRoute>{/* <Statistic /> */}</PrivateRoute>}
+                />
+                <Route
+                    path="login"
+                    element={<PublicRoute>{/* <Login /> */}</PublicRoute>}
+                />
+                <Route
+                    path="register"
+                    element={<PublicRoute>{/* <Register /> */}</PublicRoute>}
+                />
+            </Route>
+            <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
     );
 };
