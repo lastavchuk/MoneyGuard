@@ -3,9 +3,9 @@ import { Button } from 'components/Button/Button';
 import { Formik } from 'formik';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeModalAddTransaction } from 'redux/global/globalSlice';
+import { closeModalAddTransaction } from 'redux/globalSlice';
 import { getTransactionsCategoriesThunk, addTransactionThunk } from 'redux/transaction/transactionOperations';
-import { selectCategories } from 'redux/transaction/transactionSelector';
+import { selectCategories } from 'redux/selectors';
 import { ButtonWrapper,  InputWrapper, ExpenseSpan, IncomeSpan, MinusButton, ModalAddWrapper, ModalTransactionTitle, 
 PlusButton, RadioWrapper, RadioWrapperChoose, RoundedButton,  StyledLabelWrapper, StyledField, StyledForm } from './ModaAddlTransaction.styled';
 import { useCategoriesType } from 'hooks/categoriesFilter';
