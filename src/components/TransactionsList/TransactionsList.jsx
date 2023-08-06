@@ -2,6 +2,7 @@ import { StyledTransactionsList } from './TransactionsList.styled';
 import { GoPencil } from 'react-icons/go';
 import { useSelector } from 'react-redux';
 import { selectCategories } from 'redux/selectors';
+import { useMediaQuery } from 'react-responsive';
 
 // const categories = [
 //     {
@@ -68,6 +69,12 @@ function TransactionsList({
 }) {
     const categories = useSelector(selectCategories);
 
+    const isDesktopOrTablet = useMediaQuery({
+        query: '(min-width: 768px)',
+    });
+
+    const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+
     const sortedTransactions = transactions?.sort((a, b) =>
         b.transactionDate.localeCompare(a.transactionDate)
     );
@@ -85,57 +92,151 @@ function TransactionsList({
     }
 
     function formatComment(comment) {
-        return comment.length > 29
-            ? comment.split('').splice(0, 29).join('') + '...'
+        return comment.length > 25
+            ? comment.split('').splice(0, 25).join('') + '...'
             : comment;
     }
 
     return (
-        <StyledTransactionsList>
-            {transactions && sortedTransactions.map(
-                ({
-                    id,
-                    transactionDate,
-                    type,
-                    categoryId,
-                    comment,
-                    amount,
-                }) => (
-                    <tr key={id}>
-                        <td>{formatDate(transactionDate)}</td>
-                        <td>{type === 'EXPENSE' ? '-' : '+'}</td>
-                        <td>{findCategoryName(categoryId)}</td>
-                        <td>{formatComment(comment)}</td>
-                        <td className={type.toLowerCase()}>{amount}</td>
-                        <td>
-                            <button
-                                className="edit"
-                                type="button"
-                                onClick={() =>
-                                    onEditTransaction({
+        <>
+            {isMobile &&
+                sortedTransactions.map(
+                    ({
+                        id,
+                        transactionDate,
+                        type,
+                        categoryId,
+                        comment,
+                        amount,
+                    }) => (
+                        <StyledTransactionsList
+                            key={id}
+                            className={type.toLowerCase()}
+                        >
+                            <ul>
+                                <li>
+                                    <b>Date</b>
+                                    <p>{formatDate(transactionDate)}</p>
+                                </li>
+                                <li>
+                                    <b>Type</b>
+                                    <p>{type === 'EXPENSE' ? '-' : '+'}</p>
+                                </li>
+                                <li>
+                                    <b>Category</b>
+                                    <p>{findCategoryName(categoryId)}</p>
+                                </li>
+                                <li>
+                                    <b>Comment</b>
+                                    <p>{formatComment(comment)}</p>
+                                </li>
+                                <li>
+                                    <b>Sum</b>
+                                    <p>{amount}</p>
+                                </li>
+                                <li>
+                                    <button
+                                        className="delete"
+                                        type="button"
+                                        onClick={() => onDeleteTransaction(id)}
+                                    >
+                                        Delete
+                                    </button>
+                                    <button
+                                        className="edit"
+                                        type="button"
+                                        onClick={() =>
+                                            onEditTransaction({
+                                                id,
+                                                transactionDate,
+                                                type,
+                                                categoryId,
+                                                comment,
+                                                amount,
+                                            })
+                                        }
+                                    >
+                                        <GoPencil />
+                                        Edit
+                                    </button>
+                                </li>
+                            </ul>
+                        </StyledTransactionsList>
+                    )
+                )}
+            {isDesktopOrTablet && (
+                <StyledTransactionsList>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Category</th>
+                                <th>Comment</th>
+                                <th>Sum</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {transactions &&
+                                sortedTransactions.map(
+                                    ({
                                         id,
                                         transactionDate,
                                         type,
                                         categoryId,
                                         comment,
                                         amount,
-                                    })
-                                }
-                            >
-                                <GoPencil />
-                            </button>
-                            <button
-                                className="delete"
-                                type="button"
-                                onClick={() => onDeleteTransaction(id)}
-                            >
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                )
+                                    }) => (
+                                        <tr key={id}>
+                                            <td>
+                                                {formatDate(transactionDate)}
+                                            </td>
+                                            <td>
+                                                {type === 'EXPENSE' ? '-' : '+'}
+                                            </td>
+                                            <td>
+                                                {findCategoryName(categoryId)}
+                                            </td>
+                                            <td>{formatComment(comment)}</td>
+                                            <td className={type.toLowerCase()}>
+                                                {amount}
+                                            </td>
+                                            <td>
+                                                <button
+                                                    className="edit"
+                                                    type="button"
+                                                    onClick={() =>
+                                                        onEditTransaction({
+                                                            id,
+                                                            transactionDate,
+                                                            type,
+                                                            categoryId,
+                                                            comment,
+                                                            amount,
+                                                        })
+                                                    }
+                                                >
+                                                    <GoPencil />
+                                                </button>
+                                                <button
+                                                    className="delete"
+                                                    type="button"
+                                                    onClick={() =>
+                                                        onDeleteTransaction(id)
+                                                    }
+                                                >
+                                                    Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    )
+                                )}
+                        </tbody>
+                    </table>
+                </StyledTransactionsList>
             )}
-        </StyledTransactionsList>
+        </>
     );
 }
 
