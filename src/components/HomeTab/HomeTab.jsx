@@ -1,8 +1,9 @@
 import { StyledHomeTab } from './HomeTab.styled';
-import TransactionsList from 'components/TransactionsList/TransactionsList';
 import { useSelector } from 'react-redux';
 import { selectFinanceData } from 'redux/selectors';
 import { AiOutlinePlus } from 'react-icons/ai';
+import PropTypes from 'prop-types';
+import TransactionsList from 'components/TransactionsList/TransactionsList';
 
 // const transactions = [
 //     {
@@ -97,5 +98,11 @@ function HomeTab({ onOpenModal, onEditTransaction, onDeleteTransaction }) {
         </StyledHomeTab>
     );
 }
+
+HomeTab.propTypes = {
+    onOpenModal: PropTypes.func.isRequired,
+    onEditTransaction: PropTypes.func.isRequired,
+    onDeleteTransaction: PropTypes.func.isRequired,
+  };
 
 export default HomeTab;
