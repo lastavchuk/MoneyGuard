@@ -14,20 +14,28 @@ const financeSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(createTransactionThunk.fulfilled, (state, action) => {})
-            .addCase(fetchAllTransactionsThunk.fulfilled, (state, action) => {state.data = action.payload})
+            .addCase(fetchAllTransactionsThunk.fulfilled, (state, action) => {
+                state.data = action.payload;
+            })
             .addCase(updTransactionThunk.fulfilled, (state, action) => {})
-            .addCase(delTransactionThunk.fulfilled, (state, action) => { state.data = state.data.filter(
-                transaction => transaction.id !== action.payload.id); 
-                // console.log(state.data);
+            .addCase(delTransactionThunk.fulfilled, (state, action) => {
+                // state.data = state.data.filter(
+                //     transaction => transaction.id !== action.payload
+                // );
+                const index = state.data.findIndex(
+                    transaction => transaction.id === action.payload
+                );
+                state.data.splice(index, 1);
             })
             .addCase(
                 getTransactionCategoriesThunk.fulfilled,
-                (state, action) => {state.categories = action.payload}
+                (state, action) => {
+                    state.categories = action.payload;
+                }
             )
-            .addCase(
-                getSummaryTransactionThunk.fulfilled,
-                (state, action) => {state.totalBalance = action.payload}
-            );
+            .addCase(getSummaryTransactionThunk.fulfilled, (state, action) => {
+                state.totalBalance = action.payload;
+            });
     },
 });
 

@@ -62,8 +62,8 @@ export async function updTransaction({ transactionId, ...transactionData }) {
 }
 
 export async function delTransaction(id) {
-    const { data } = await instance.delete(`/transactions/${id}`);
-    return data;
+    await instance.delete(`/transactions/${id}`);
+    return id;
 }
 
 export async function getTransactionCategories() {
