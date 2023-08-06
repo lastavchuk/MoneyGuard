@@ -3,20 +3,25 @@ import styled from 'styled-components';
 export const StyledTransactionsList = styled.div`
     margin: 0 auto;
     width: 280px;
+    position: relative;
+    overflow: hidden;
 
-    ul {
-        width: 100%;
-        height: 293px;
-        padding: 0 20px;
-        /* background-color: black; */
+    &.expense::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        height: 300px;
+        width: 5px;
+        background-color: var(--dashboard-text);
     }
 
-    &.expense {
-        border-left: 5px solid var(--dashboard-text);
-    }
-
-    &.income {
-        border-left: 5px solid var(--yellow);
+    &.income::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        height: 300px;
+        width: 5px;
+        background-color: var(--yellow);
     }
 
     li {
@@ -77,14 +82,16 @@ export const StyledTransactionsList = styled.div`
     }
 
     @media only screen and (max-width: 767px) {
+        padding: 0 20px;
+        height: 293px;
         margin-bottom: 8px;
         border-radius: 10px;
         height: 293px;
         background: rgba(255, 255, 255, 0.1);
 
         button.edit {
-        display: flex;
-        justify-content: space-between;
+            display: flex;
+            justify-content: space-between;
         }
     }
 

@@ -80,8 +80,9 @@ import { AiOutlinePlus } from 'react-icons/ai';
 
 function HomeTab({ onOpenModal, onEditTransaction, onDeleteTransaction }) {
     const transactions = useSelector(selectFinanceData);
+    
 
-    return (
+ return (
         <StyledHomeTab>
             {transactions && (
                 <TransactionsList

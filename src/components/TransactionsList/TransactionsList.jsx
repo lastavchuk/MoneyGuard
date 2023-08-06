@@ -1,8 +1,8 @@
 import { StyledTransactionsList } from './TransactionsList.styled';
 import { GoPencil } from 'react-icons/go';
 import { useSelector } from 'react-redux';
-import { selectCategories } from 'redux/selectors';
 import { useMediaQuery } from 'react-responsive';
+import { selectCategories} from 'redux/selectors';
 
 // const categories = [
 //     {
@@ -75,12 +75,12 @@ function TransactionsList({
 
     const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
 
-    const sortedTransactions = transactions?.sort((a, b) =>
+    const sortedTransactions = [...transactions].sort((a, b) =>
         b.transactionDate.localeCompare(a.transactionDate)
     );
 
     function findCategoryName(id) {
-        return categories.find(category => category.id === id).name;
+        return categories?.find(category => category.id === id).name;
     }
 
     function formatDate(date) {
