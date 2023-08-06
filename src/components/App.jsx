@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
 import { refreshUserThunk } from 'redux/auth/userThunks';
 import { selectUserToken } from 'redux/selectors';
-import { useSelector} from "react-redux"
+import { useSelector} from "react-redux";
 // import { loginUserThunk} from '../redux/auth/userThunks';
 // import { fetchAllTransactionsThunk } from 'redux/finance/financeThunks';
 // import { getTransactionCategoriesThunk } from "redux/finance/financeThunks";
@@ -15,6 +15,7 @@ import { useSelector} from "react-redux"
 export const App = () => {
     const dispatch = useDispatch();
     const token = useSelector(selectUserToken);
+
 
     useEffect(() => {
         if (!token) return;
@@ -36,31 +37,32 @@ export const App = () => {
     // }
 
     return (
+        <Home/>
         // <>
         //     <h1 onClick={foo1}>login</h1>
         //     <h1 onClick={foo2}>All cat</h1>
         // </>
-        <Routes>
-            <Route path="/" element={<SharedLayout />}>
-                <Route
-                    index
-                    // element={<PrivateRoute>{<Home />}</PrivateRoute>}
-                    element={<Home/>}
-                />
-                <Route
-                    path="statistic"
-                    element={<PrivateRoute>{/* <Statistic /> */}</PrivateRoute>}
-                />
-                <Route
-                    path="login"
-                    element={<PublicRoute>{/* <Login /> */}</PublicRoute>}
-                />
-                <Route
-                    path="register"
-                    element={<PublicRoute>{/* <Register /> */}</PublicRoute>}
-                />
-            </Route>
-            <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        // <Routes>
+        //     <Route path="/" element={<SharedLayout />}>
+        //         <Route
+        //             index
+        //             // element={<PrivateRoute>{<Home />}</PrivateRoute>}
+        //             element={<Home/>}
+        //         />
+        //         <Route
+        //             path="statistic"
+        //             element={<PrivateRoute>{/* <Statistic /> */}</PrivateRoute>}
+        //         />
+        //         <Route
+        //             path="login"
+        //             element={<PublicRoute>{/* <Login /> */}</PublicRoute>}
+        //         />
+        //         <Route
+        //             path="register"
+        //             element={<PublicRoute>{/* <Register /> */}</PublicRoute>}
+        //         />
+        //     </Route>
+        //     <Route path="*" element={<Navigate to="/" replace />} />
+        // </Routes>
     );
 };
