@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { ExitModalBtn, IconCloseModal, Backdrop,  ModalStyled} from './Modal.styled';
 import { useEffect } from 'react';
@@ -21,11 +21,9 @@ export const Modal = ({ children, closeReducer }) => {
       dispatch(closeReducer());
     }
   };
-
   const handleCloseModal = () => {
     dispatch(closeReducer());
   };
-
   return createPortal(
     <Backdrop onClick={onCloseModal}>
       <ModalStyled>
