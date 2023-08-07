@@ -20,5 +20,9 @@ export const StyledSelectors = styled.div`
         &__indicator-separator {
             display: none !important;
         }
+
+        &__single-value {
+            color: #fbfbfb;
+        }
     }
 `;

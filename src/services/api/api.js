@@ -80,5 +80,6 @@ export async function getSummaryTransaction({ month = null, year = null }) {
     const { data } = await instance.get('/transactions-summary', {
         params: { month, year },
     });
+    console.log(data);
     return data;
 }

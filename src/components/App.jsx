@@ -7,21 +7,23 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
 import { refreshUserThunk } from 'redux/auth/userThunks';
-import { selectLoading, selectUserIsAuth } from 'redux/selectors';
+import { selectLoading, selectUserToken } from 'redux/selectors';
 import { useSelector } from 'react-redux';
 import Loader from './Loader/Loader';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
+import Home from 'pages/Home';
+import SummaryPage from 'pages/SummaryPage';
 
 export const App = () => {
     const dispatch = useDispatch();
-    const userIsAuth = useSelector(selectUserIsAuth);
-    const isLoading = useSelector(selectLoading);
 
+    const isLoading = useSelector(selectLoading);
+    const token = useSelector(selectUserToken);
     useEffect(() => {
-        if (!userIsAuth) return;
+        if (!token) return;
         dispatch(refreshUserThunk());
-    }, [dispatch, userIsAuth]);
+    }, [dispatch, token]);
 
     return (
         <>
@@ -42,19 +44,20 @@ export const App = () => {
                         </PublicRoute>
                     }
                 />
-                <Route path="/home" element={<Home />} />
+                {/* <Route path="/home" element={<Home />} /> */}
                 <Route path="/" element={<SharedLayout />}>
                     <Route
                         index
                         element={<PrivateRoute>{<Home />}</PrivateRoute>}
-                        // element={<Home />}
                     />
-                    {/* <Route
-                        path="statistic"
+                    <Route
+                        path="statistics"
                         element={
-                            <PrivateRoute><Statistic /></PrivateRoute>
+                            <PrivateRoute>
+                                <SummaryPage />
+                            </PrivateRoute>
                         }
-                    /> */}
+                    />
                 </Route>
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
