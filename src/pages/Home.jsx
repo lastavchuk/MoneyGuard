@@ -7,12 +7,14 @@ import {
     delTransactionThunk,
 } from 'redux/finance/financeThunks';
 import { openModalAddTransaction } from 'redux/globalSlice';
-import { selectUserData } from 'redux/selectors';
+import { selectIsModalAddTransactionOpen, selectUserData } from 'redux/selectors';
+// import { ModalAddTransaction } from 'components/ModaAddlTransaction/ModaAddlTransaction';
 
 
 function Home() {
   const dispatch = useDispatch();
   const userData = useSelector(selectUserData);
+//   const isModalOpen = useSelector( selectIsModalAddTransactionOpen)
 
     useEffect(() => {
       if (userData){
@@ -28,15 +30,17 @@ function Home() {
     }
     function handlerDeleteTransaction(id) {
         dispatch(delTransactionThunk(id));
-        // console.log("home", id);
     }
 
     return (
+        <main>
         <HomeTab
             onOpenModal={handleOpenModal}
             onEditTransaction={handlerEditTransaction}
             onDeleteTransaction={handlerDeleteTransaction}
         />
+        {/* {isModalOpen && <ModalAddTransaction/>} */}
+        </main>
     );
 }
 

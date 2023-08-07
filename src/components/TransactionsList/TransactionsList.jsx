@@ -2,7 +2,8 @@ import { StyledTransactionsList } from './TransactionsList.styled';
 import { GoPencil } from 'react-icons/go';
 import { useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
-import { selectCategories} from 'redux/selectors';
+import { selectCategories } from 'redux/selectors';
+import PropTypes from 'prop-types';
 
 // const categories = [
 //     {
@@ -132,7 +133,7 @@ function TransactionsList({
                                 </li>
                                 <li>
                                     <b>Sum</b>
-                                    <p>{amount}</p>
+                                    <p>{Math.abs(amount)}</p>
                                 </li>
                                 <li>
                                     <button
@@ -239,5 +240,20 @@ function TransactionsList({
         </>
     );
 }
+
+TransactionsList.propTypes = {
+    onEditTransaction: PropTypes.func.isRequired,
+    onDeleteTransaction: PropTypes.func.isRequired,
+    transactions: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            transactionDate: PropTypes.string.isRequired,
+            type: PropTypes.string.isRequired,
+            categoryId: PropTypes.string.isRequired,
+            comment: PropTypes.string.isRequired,
+            amount: PropTypes.number.isRequired,
+        })
+    ),
+};
 
 export default TransactionsList;

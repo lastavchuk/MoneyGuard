@@ -19,9 +19,6 @@ const financeSlice = createSlice({
             })
             .addCase(updTransactionThunk.fulfilled, (state, action) => {})
             .addCase(delTransactionThunk.fulfilled, (state, action) => {
-                // state.data = state.data.filter(
-                //     transaction => transaction.id !== action.payload
-                // );
                 const index = state.data.findIndex(
                     transaction => transaction.id === action.payload
                 );
