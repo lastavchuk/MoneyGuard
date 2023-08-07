@@ -14,14 +14,14 @@ import { App } from 'components/App';
 ReactDOM.createRoot(document.getElementById('root')).render(
     // <React.StrictMode>
     <ThemeProvider theme={theme}>
-    <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-            <BrowserRouter basename="/MoneyGuard">
-                <App />
-                <ToastContainer autoClose={1000} theme="dark" />
-            </BrowserRouter>
-        </PersistGate>
-    </Provider>
+        <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>
+                <BrowserRouter basename="/MoneyGuard">
+                    <App />
+                    <ToastContainer autoClose={1000} theme="dark" />
+                </BrowserRouter>
+            </PersistGate>
+        </Provider>
     </ThemeProvider>
     // </React.StrictMode>
 );

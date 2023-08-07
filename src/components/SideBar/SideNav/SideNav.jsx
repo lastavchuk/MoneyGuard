@@ -6,7 +6,7 @@ import {
     StyledLink,
     SvgHome,
     SvgStat,
-    SideNavText
+    SideNavText,
 } from './SideNav.styled';
 
 const SideNav = () => {
@@ -20,7 +20,7 @@ const SideNav = () => {
                     </StyledLink>
                 </li>
                 <li>
-                    <StyledLink to="statistic">
+                    <StyledLink to="statistics">
                         <SvgStat />
                         <SideNavText>Statistics</SideNavText>
                     </StyledLink>
