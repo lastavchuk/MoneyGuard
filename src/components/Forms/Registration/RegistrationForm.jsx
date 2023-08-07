@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { registerUserThunk } from 'redux/auth/userThunks';
 
 import { Field, Formik } from 'formik';
 import * as Yup from 'yup';
@@ -19,6 +18,8 @@ import { InputAdornment, TextField } from '@mui/material';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
+import PasswordStrengthBar from 'react-password-strength-bar';
+import { registerUserThunk } from 'redux/auth/userThunks';
 
 const RegistrationForm = () => {
     const dispatchEvent = useDispatch();
@@ -31,7 +32,7 @@ const RegistrationForm = () => {
 
         email: Yup.string()
             .email('Invalid email address')
-            .min(6, 'Must be at least 2 characters')
+            .min(6, 'Must be at least 6 characters')
             .max(25, 'Must be up to 25 characters')
             .required('Required'),
 
@@ -90,12 +91,11 @@ const RegistrationForm = () => {
                                         />
                                     </InputAdornment>
                                 ),
-                                // style: { color: 'grey' },
-                                // placeholderStyle: { color: 'grey' },
                             }}
                             style={{ width: '100%', color: 'grey' }}
                             variant="standard"
                             name="username"
+                            autoComplete="username"
                             type="text"
                             label=""
                             htmlFor="username"
@@ -125,6 +125,7 @@ const RegistrationForm = () => {
                             label=""
                             htmlFor="email"
                             placeholder="E-mail"
+                            autoComplete="email"
                             onChange={formik.handleChange}
                             error={Boolean(formik.errors.email)}
                             helperText={
@@ -150,11 +151,12 @@ const RegistrationForm = () => {
                             label=""
                             htmlFor="password"
                             placeholder="Password"
+                            autoComplete="new-password"
                             onChange={formik.handleChange}
                             error={Boolean(formik.errors.password)}
                             helperText={
                                 formik.errors.password &&
-                                'Please enter your valid password (from 6 to 12 symbols)'
+                                'Password must contain at least 6 and up to 12 characters'
                             }
                         />
 
@@ -175,6 +177,7 @@ const RegistrationForm = () => {
                             label=""
                             htmlFor="password2"
                             placeholder="Confirm password"
+                            autoComplete="new-password"
                             onChange={formik.handleChange}
                             error={Boolean(formik.errors.confirmPassword)}
                             helperText={
@@ -182,8 +185,26 @@ const RegistrationForm = () => {
                                 'Please enter your valid password'
                             }
                         />
+                        <PasswordStrengthBar
+                            password={formik.values.password}
+                            minLength={2}
+                            maxLength={12}
+                        />
+                        {formik.values.password !== formik.values.password2 && (
+                            <span style={{ color: 'red' }}>
+                                Passwords do not match!!!
+                            </span>
+                        )}
 
-                        <Button type="submit">REGISTER</Button>
+                        <Button
+                            type="submit"
+                            disabled={
+                                formik.values.password !==
+                                formik.values.password2
+                            }
+                        >
+                            REGISTER
+                        </Button>
                         <Link to="/login">
                             <NavBtn>LOG IN</NavBtn>
                         </Link>

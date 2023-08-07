@@ -60,6 +60,7 @@ const LoginForm = () => {
                             type="email"
                             label=""
                             placeholder="E-mail"
+                            autoComplete="email"
                             onChange={formik.handleChange}
                             error={Boolean(formik.errors.email)}
                             helperText={
@@ -84,6 +85,7 @@ const LoginForm = () => {
                             type="password"
                             label=""
                             placeholder="Password"
+                            autoComplete="new-password"
                             onChange={formik.handleChange}
                             error={Boolean(formik.errors.password)}
                             helperText={

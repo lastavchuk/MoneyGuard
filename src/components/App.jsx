@@ -1,4 +1,4 @@
-import Home from '../pages/Home';
+
 import PrivateRoute from 'guards/PrivateRoute';
 import PublicRoute from 'guards/PublicRoute';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
@@ -9,6 +9,9 @@ import { refreshUserThunk } from 'redux/auth/userThunks';
 import { selectLoading, selectUserToken } from 'redux/selectors';
 import { useSelector} from "react-redux";
 import Loader from './Loader/Loader';
+import Home from 'pages/Home';
+import LoginPage from 'pages/LoginPage/LoginPage';
+import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 // import { loginUserThunk} from '../redux/auth/userThunks';
 
 export const App = () => {
@@ -36,6 +39,7 @@ export const App = () => {
 
     return (
         <>
+
         {/* //     <h1 onClick={foo1}>login</h1>
         //     <h1 onClick={foo2}>All cat</h1> */}
         <Routes>
@@ -51,11 +55,11 @@ export const App = () => {
                 />
                 <Route
                     path="login"
-                    element={<PublicRoute>{/* <Login /> */}</PublicRoute>}
+                    element={<PublicRoute>{<LoginPage />}</PublicRoute>}
                 />
                 <Route
                     path="register"
-                    element={<PublicRoute>{/* <Register /> */}</PublicRoute>}
+                    element={<PublicRoute>{<RegistrationPage />}</PublicRoute>}
                 />
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
