@@ -1,10 +1,13 @@
 import { StyledHeader } from './Header.styled';
 import { IoExitOutline } from 'react-icons/io5';
 import { useMediaQuery } from 'react-responsive';
+import { useSelector} from "react-redux";
+import { selectUserData } from 'redux/selectors';
 // import logo from "../../assests/images/symbol-defs.svg#icon-logo_MoneyGuard";
 
 function Header() {
     const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+    const userData = useSelector(selectUserData);
 
     return (
         <StyledHeader>
@@ -62,7 +65,7 @@ function Header() {
                 )}
                 <p>Money Guard</p>
             </div>
-            <span>Name</span>
+            <span>{userData.username}</span>
             <button>
                 <IoExitOutline
                     style={
