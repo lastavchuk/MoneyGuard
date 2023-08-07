@@ -5,7 +5,7 @@ import {
     logOutUser,
     registerUser,
     setToken,
-} from 'services/api';
+} from 'services/api/api';
 
 export const registerUserThunk = createAsyncThunk(
     'user/registerUserThunk',

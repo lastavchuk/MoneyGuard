@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux';
 import Loader from './Loader/Loader';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
+import Home from 'pages/Home';
 
 
 export const App = () => {
@@ -42,12 +43,12 @@ export const App = () => {
                             </PublicRoute>
                         }
                     />
-                <Route path="/home" element={<Home />} />
+             
                 <Route path="/" element={<SharedLayout />}>
                     <Route
                         index
                         element={<PrivateRoute>{<Home />}</PrivateRoute>}
-                        // element={<Home />}
+                        
                     />
                     {/* <Route
                         path="statistic"

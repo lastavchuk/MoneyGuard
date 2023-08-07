@@ -1,37 +1,57 @@
 import styled from 'styled-components';
 
-import registerImg from '../../assests/img/registr_desktop@1x.jpg';
-import registerImg2 from '../../assests/img/registr_desktop@2x.jpg';
+import backgroundMob from '../../assests/img/login_mob@1x.jpg';
+import backgroundMob2 from '../../assests/img/login_mob@2x.jpg';
+
+import backgroundTab from '../../assests/img/registr_tablet@1x.jpg';
+import backgroundTab2 from '../../assests/img/registr_tablet@2x.jpg';
+
+import backgroundDeck from '../../assests/img/registr_desktop@1x.jpg';
+import backgroundDeck2 from '../../assests/img/registr_desktop@2x.jpg';
 
 export const RegPageContainer = styled.div`
-   width: 100%;
+   width: 100vw;
   height: 100vh;
-  background-image: url(${registerImg});
+  background-image: url(${backgroundMob});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
 
-  @media (max-width: 780px) {
+  @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(${backgroundMob2});
+    }
+
+    @media only screen and (max-width: 767px) {
+      backdrop-filter: blur(50px);
+}
+    @media only screen and (min-width: 768px) {
+        background-image: url(${backgroundTab});
   
-    background-image: url(${registerImg2 });
-  }
+        @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(${backgroundTab2});
+    }
+    }
+
+    @media only screen and (min-width: 1280px){
+      background-image: url(${backgroundDeck});
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(${backgroundDeck2});
+    }
+    
+    }
 `;
 
 export const LogoStyled = styled.div`    
-  /* outline: 1px solid black; */
   width: 182px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center; 
   
-  h3 {
-    margin: 0 auto;
-    color: var(--white, #fbfbfb);    
-    font-size: 27px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
 `
