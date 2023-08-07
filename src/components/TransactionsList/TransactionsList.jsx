@@ -201,7 +201,7 @@ function TransactionsList({
                                             </td>
                                             <td>{formatComment(comment)}</td>
                                             <td className={type.toLowerCase()}>
-                                                {amount}
+                                                {Math.abs(amount)}
                                             </td>
                                             <td>
                                                 <button

@@ -6,16 +6,15 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
 import { refreshUserThunk } from 'redux/auth/userThunks';
-import { selectUserToken } from 'redux/selectors';
+import { selectLoading, selectUserToken } from 'redux/selectors';
 import { useSelector} from "react-redux";
+import Loader from './Loader/Loader';
 // import { loginUserThunk} from '../redux/auth/userThunks';
-// import { fetchAllTransactionsThunk } from 'redux/finance/financeThunks';
-// import { getTransactionCategoriesThunk } from "redux/finance/financeThunks";
 
 export const App = () => {
     const dispatch = useDispatch();
     const token = useSelector(selectUserToken);
-
+    const isLoading = useSelector(selectLoading);
 
     useEffect(() => {
         if (!token) return;
@@ -34,13 +33,11 @@ export const App = () => {
     // }
     // function foo2() {
     //     dispatch(fetchAllTransactionsThunk());
-    // }
 
     return (
-        // <>
-        //     <h1 onClick={foo1}>login</h1>
-        //     <h1 onClick={foo2}>All cat</h1>
-        // </>
+        <>
+        {/* //     <h1 onClick={foo1}>login</h1>
+        //     <h1 onClick={foo2}>All cat</h1> */}
         <Routes>
             <Route path="/" element={<SharedLayout />}>
                 <Route
@@ -63,5 +60,7 @@ export const App = () => {
             </Route>
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+         {isLoading && <Loader/>}
+        </>
     );
 };
