@@ -6,7 +6,7 @@ import {
     getSummaryTransaction,
     getTransactionCategories,
     updTransaction,
-} from 'services/api';
+} from 'services/api/api';
 
 export const createTransactionThunk = createAsyncThunk(
     'finance/createTransactionThunk',
