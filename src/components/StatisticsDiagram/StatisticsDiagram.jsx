@@ -7,9 +7,9 @@ import {
     Title,
 } from 'chart.js/auto';
 import { Doughnut } from 'react-chartjs-2';
+import { Colors } from 'chart.js';
 
-ChartJS.register(ArcElement, Tooltip, Legend, Title);
-
+ChartJS.register(ArcElement, Tooltip, Legend, Title, Colors);
 const StatisticsDiagram = () => {
     // <block:actions:2>
     // const actions = [
