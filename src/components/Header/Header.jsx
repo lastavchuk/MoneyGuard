@@ -1,9 +1,9 @@
 import { StyledHeader } from './Header.styled';
 import { IoExitOutline } from 'react-icons/io5';
 import { useMediaQuery } from 'react-responsive';
-import { useSelector} from "react-redux";
+import { useSelector } from 'react-redux';
 import { selectUserData } from 'redux/selectors';
-// import logo from "../../assests/images/symbol-defs.svg#icon-logo_MoneyGuard";
+// import logo from '../../assests/images/symbol-defs.svg#icon-logo_MoneyGuard';
 
 function Header() {
     const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
@@ -70,13 +70,18 @@ function Header() {
                 <IoExitOutline
                     style={
                         isMobile
-                            ? { width: 18, height: 18, verticalAlign: 'sub',  transform: "scaleY(1.4)" }
+                            ? {
+                                  width: 18,
+                                  height: 18,
+                                  verticalAlign: 'sub',
+                                  transform: 'scaleY(1.4)',
+                              }
                             : {
                                   width: 18,
                                   height: 18,
                                   verticalAlign: 'sub',
                                   marginRight: '8px',
-                                  transform: "scaleY(1.4)"
+                                  transform: 'scaleY(1.4)',
                               }
                     }
                 />

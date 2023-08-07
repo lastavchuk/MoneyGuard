@@ -15,6 +15,7 @@ export const StyledSelectors = styled.div`
         }
         &__menu {
             width: 182px !important;
+            color: black;
         }
     }
 `;
