@@ -65,7 +65,7 @@ function Header() {
                 )}
                 <p>Money Guard</p>
             </div>
-            <span>{userData.username}</span>
+            <span>{userData?.username}</span>
             <button>
                 <IoExitOutline
                     style={
