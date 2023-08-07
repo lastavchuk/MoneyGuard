@@ -18,15 +18,15 @@ function Header() {
                     >
                         <path
                             fill="#FFC727"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="M12.516 2.352c-1.212-.303-2.423-.909-3.331-1.817-.909.908-2.12 1.514-3.332 1.817.303 2.725 1.212 4.542 3.332 6.057 2.12-1.515 3.33-3.332 3.33-6.057Z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                         />
                         <path
                             fill="#FBFBFB"
-                            fill-rule="evenodd"
+                            fillRule="evenodd"
                             d="m11.304 13.627-8.48-9.993v4.845l6.663 7.571 1.817-2.423ZM12.213 12.719l3.634-4.24V3.937l-5.754 6.662 2.12 2.12ZM12.516 14.233v2.726l3.33-3.937v-2.725l-3.33 3.936ZM6.156 14.233l-3.331-3.936v2.725l3.331 3.937v-2.726Z"
-                            clip-rule="evenodd"
+                            clipRule="evenodd"
                         />
                     </svg>
                 ) : (
@@ -67,12 +67,13 @@ function Header() {
                 <IoExitOutline
                     style={
                         isMobile
-                            ? { width: 18, height: 18, verticalAlign: 'sub' }
+                            ? { width: 18, height: 18, verticalAlign: 'sub',  transform: "scaleY(1.4)" }
                             : {
                                   width: 18,
                                   height: 18,
                                   verticalAlign: 'sub',
                                   marginRight: '8px',
+                                  transform: "scaleY(1.4)"
                               }
                     }
                 />
