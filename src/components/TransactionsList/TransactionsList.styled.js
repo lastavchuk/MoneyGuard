@@ -32,6 +32,10 @@ export const StyledTransactionsList = styled.div`
         position: relative;
     }
 
+    li:nth-child(4) p {
+        text-transform: capitalize;
+    }
+
     li:not(:last-child)::after {
         content: '';
         position: absolute;
@@ -191,6 +195,10 @@ export const StyledTransactionsList = styled.div`
         td:nth-child(2) {
             width: 123px;
             text-align: center;
+        }
+
+        td:nth-child(4) {
+            text-transform: capitalize;
         }
 
         td:last-child {
