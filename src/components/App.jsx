@@ -1,7 +1,7 @@
 import Home from '../pages/Home';
 import PrivateRoute from 'guards/PrivateRoute';
 import PublicRoute from 'guards/PublicRoute';
-import SharedLayout from 'components/layout/SharedLayout';
+import SharedLayout from 'components/SharedLayout/SharedLayout';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
