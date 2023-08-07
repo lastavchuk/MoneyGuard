@@ -1,21 +1,29 @@
 import { NavLink } from 'react-router-dom';
-import { NavDiv, NavList, NavItem, StyledLink } from './SideNav.styled';
-import home from '../../../assests/images/symbol-defs.svg';
+import {
+    NavDiv,
+    NavList,
+    NavItem,
+    StyledLink,
+    SvgHome,
+    SvgStat,
+    SideNavText
+} from './SideNav.styled';
 
 const SideNav = () => {
-    console.log(home + "#home");
-
     return (
         <NavDiv>
             <ul>
                 <li>
-                    <svg width="24" height="24">
-                        <use href={home + "#home"}></use>
-                    </svg>
-                    <StyledLink to="/">Home</StyledLink>
+                    <StyledLink to="/">
+                        <SvgHome />
+                        <SideNavText>Home</SideNavText>
+                    </StyledLink>
                 </li>
                 <li>
-                    <StyledLink to="statistic">Statistics</StyledLink>
+                    <StyledLink to="statistic">
+                        <SvgStat />
+                        <SideNavText>Statistics</SideNavText>
+                    </StyledLink>
                 </li>
             </ul>
         </NavDiv>
