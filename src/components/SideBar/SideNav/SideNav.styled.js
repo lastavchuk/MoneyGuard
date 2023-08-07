@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import { IoMdHome } from 'react-icons/io';
 import { MdOutlineAutoGraph } from 'react-icons/md';
 
-export const NavDiv = styled.div`
+export const NavDiv = styled.nav`
     display: flex;
-    margin: 40px auto 28px 16px;
+    margin: 0 auto 28px 16px;
+    padding-top: 40px;
 `;
 
 export const NavItem = styled.li`
@@ -26,15 +27,23 @@ export const SvgHome = styled(IoMdHome)`
     height: 18px;
     margin-right: 20px;
 
-    &:active {
+    &.active {
         background-color: #734aef;
+        color: white;
     }
 `;
 
 export const SideNavText = styled.p`
-    font-weight: 700;
+    font-weight: 400;
     font-size: 18px;
     line-height: 27px;
+    color: #fbfbfb;
+
+    &.active {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 27px;
+    }
 `;
 
 export const SvgStat = styled(MdOutlineAutoGraph)`
@@ -45,7 +54,7 @@ export const SvgStat = styled(MdOutlineAutoGraph)`
     height: 18px;
     margin-right: 20px;
 
-    &:active {
+    &.active {
         background-color: #734aef;
     }
 `;
