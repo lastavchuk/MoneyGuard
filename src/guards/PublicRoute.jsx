@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { selectUserToken } from 'redux/selectors';
+import { selectUserIsAuth} from 'redux/selectors';
 
 export default function PublicRoute({ children }) {
-    const token = useSelector(selectUserToken);
-    return !token ? children : <Navigate to="/" />;
+    const userIsAuth = useSelector( selectUserIsAuth );
+    return !userIsAuth ? children : <Navigate to="/" />;
 }
 
 PublicRoute.propTypes = {

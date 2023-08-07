@@ -6,65 +6,59 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
 import { refreshUserThunk } from 'redux/auth/userThunks';
-import { selectLoading, selectUserToken } from 'redux/selectors';
-import { useSelector} from "react-redux";
+import { selectLoading, selectUserIsAuth } from 'redux/selectors';
+import { useSelector } from 'react-redux';
 import Loader from './Loader/Loader';
-import Home from 'pages/Home';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
-// import { loginUserThunk} from '../redux/auth/userThunks';
+
 
 export const App = () => {
     const dispatch = useDispatch();
-    const token = useSelector(selectUserToken);
+    const userIsAuth = useSelector( selectUserIsAuth );
     const isLoading = useSelector(selectLoading);
 
     useEffect(() => {
-        if (!token) return;
+        if (!userIsAuth) return;
         dispatch(refreshUserThunk());
-        // dispatch(getTransactionCategoriesThunk());
-        // dispatch(fetchAllTransactionsThunk());
-    }, [dispatch, token]);
-
-    // function foo1() {
-    //     dispatch(
-    //         loginUserThunk({
-    //             email: 'komp458@ukr.cc',
-    //             password: 'komp458',
-    //         })
-    //     );
-    // }
-    // function foo2() {
-    //     dispatch(fetchAllTransactionsThunk());
+    }, [dispatch, userIsAuth]);
 
     return (
         <>
-
-        {/* //     <h1 onClick={foo1}>login</h1>
-        //     <h1 onClick={foo2}>All cat</h1> */}
-        <Routes>
-            <Route path="/" element={<SharedLayout />}>
-                <Route
-                    index
-                    // element={<PrivateRoute>{<Home />}</PrivateRoute>}
-                    element={<Home/>}
-                />
-                <Route
-                    path="statistic"
-                    element={<PrivateRoute>{/* <Statistic /> */}</PrivateRoute>}
-                />
+            <Routes>
                 <Route
                     path="login"
-                    element={<PublicRoute>{<LoginPage />}</PublicRoute>}
+                    element={
+                        <PublicRoute>
+                            <LoginPage />
+                        </PublicRoute>
+                    }
                 />
-                <Route
-                    path="register"
-                    element={<PublicRoute>{<RegistrationPage />}</PublicRoute>}
-                />
-            </Route>
-            <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-         {isLoading && <Loader/>}
+                    <Route
+                        path="register"
+                        element={
+                            <PublicRoute>
+                                <RegistrationPage />
+                            </PublicRoute>
+                        }
+                    />
+                <Route path="/home" element={<Home />} />
+                <Route path="/" element={<SharedLayout />}>
+                    <Route
+                        index
+                        element={<PrivateRoute>{<Home />}</PrivateRoute>}
+                        // element={<Home />}
+                    />
+                    {/* <Route
+                        path="statistic"
+                        element={
+                            <PrivateRoute><Statistic /></PrivateRoute>
+                        }
+                    /> */}
+                </Route>
+                <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+            {isLoading && <Loader />}
         </>
     );
 };

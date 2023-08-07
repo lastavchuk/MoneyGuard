@@ -12,7 +12,7 @@ export const clearToken = () => {
     instance.defaults.headers.Authorization = '';
 };
 
-//==================== User ===================== 
+//=== User ===
 export async function loginUser(userData) {
     const { data } = await instance.post('/auth/sign-in', userData);
     return data;
@@ -35,7 +35,7 @@ export async function currentUser() {
     return data;
 }
 
-//================= Transactions ===============
+//=== Transactions ===
 export async function createTransaction(transaction) {
     const { data } = await instance.post('/transactions', transaction);
     return data;
