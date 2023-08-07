@@ -14,7 +14,7 @@ import { selectIsModalAddTransactionOpen, selectUserData } from 'redux/selectors
 function Home() {
   const dispatch = useDispatch();
   const userData = useSelector(selectUserData);
-//   const isModalOpen = useSelector( selectIsModalAddTransactionOpen)
+  const isModalOpen = useSelector( selectIsModalAddTransactionOpen)
 
     useEffect(() => {
       if (userData){
