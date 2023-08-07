@@ -12,7 +12,7 @@ export const clearToken = () => {
     instance.defaults.headers.Authorization = '';
 };
 
-//==================== User ===================== 
+//==================== User =====================
 export async function loginUser(userData) {
     const { data } = await instance.post('/auth/sign-in', userData);
     return data;

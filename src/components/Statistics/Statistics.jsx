@@ -4,7 +4,10 @@ import StatisticsTable from 'components/StatisticsTable/StatisticsTable';
 import React, { useEffect } from 'react';
 import { StyledStatistics } from './Statistics.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTransactionCategoriesThunk } from 'redux/finance/financeThunks';
+import {
+    getSummaryTransactionThunk,
+    getTransactionCategoriesThunk,
+} from 'redux/finance/financeThunks';
 import {
     selectFinanceData,
     selectFinanceTotalBalance,
@@ -23,6 +26,7 @@ const Statistics = () => {
     useEffect(() => {
         if (!token) return;
         dispatch(getTransactionCategoriesThunk());
+        dispatch(getSummaryTransactionThunk({ month: 'march', year: '2023' }));
     }, [dispatch, token]);
 
     console.log(userData);

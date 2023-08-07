@@ -28,31 +28,30 @@ export const App = () => {
     //     dispatch(fetchAllTransactionsThunk());
 
     return (
-        <>
-            <Statistics />
-            {/* <h1 onClick={foo1}>login</h1>
-            <h1 onClick={foo2}>All cat</h1> */}
-        </>
-        // <Routes>
-        //     <Route path="/" element={<SharedLayout />}>
-        //         <Route
-        //             index
-        //             element={<PrivateRoute>{<HomeTab />}</PrivateRoute>}
-        //         />
-        //         <Route
-        //             path="statistic"
-        //             element={<PrivateRoute>{/* <Statistic /> */}</PrivateRoute>}
-        //         />
-        //         <Route
-        //             path="login"
-        //             element={<PublicRoute>{/* <Login /> */}</PublicRoute>}
-        //         />
-        //         <Route
-        //             path="register"
-        //             element={<PublicRoute>{/* <Register /> */}</PublicRoute>}
-        //         />
-        //     </Route>
-        //     <Route path="*" element={<Navigate to="/" replace />} />
-        // </Routes>
+        // <>
+        //     {/* <h1 onClick={foo1}>login</h1>
+        //     <h1 onClick={foo2}>All cat</h1> */}
+        // </>
+        <Routes>
+            <Route path="/" element={<SharedLayout />}>
+                <Route
+                    index
+                    element={<PrivateRoute>{<HomeTab />}</PrivateRoute>}
+                />
+                <Route
+                    path="statistic"
+                    element={<PrivateRoute>{/* <Statistic /> */}</PrivateRoute>}
+                />
+                <Route
+                    path="login"
+                    element={<PublicRoute>{/* <Login /> */}</PublicRoute>}
+                />
+                <Route
+                    path="register"
+                    element={<PublicRoute>{/* <Register /> */}</PublicRoute>}
+                />
+            </Route>
+            <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
     );
 };

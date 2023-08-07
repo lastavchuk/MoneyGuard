@@ -17,5 +17,8 @@ export const StyledSelectors = styled.div`
             width: 182px !important;
             color: black;
         }
+        &__indicator-separator {
+            display: none !important;
+        }
     }
 `;
