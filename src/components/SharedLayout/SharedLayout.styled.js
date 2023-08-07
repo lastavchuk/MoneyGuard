@@ -9,7 +9,6 @@ import backgroundGradientMobRetina from '../../assests/images/gradient_mob@2x.we
 export const StyledSharedLayout = styled.div`
     min-height: 100vh;
     width: 100vw;
-    padding: 12px 0 45px;
     background-image: url(${backgroundGradientMob});
     background-repeat: no-repeat;
     background-position: center;
@@ -22,10 +21,16 @@ export const StyledSharedLayout = styled.div`
         background-image: url(${backgroundGradientMobRetina});
     }
 
+    @media only screen and (max-width: 767px) {
+        main {
+            padding: 12px 0 45px;
+        }
+    }
+
     @media only screen and (min-width: 768px) {
         background-image: url(${backgroundGradientTab});
 
-        main{
+        main {
             padding: 0 32px;
         }
 
