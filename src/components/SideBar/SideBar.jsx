@@ -1,6 +1,7 @@
 import SideNav from './SideNav/SideNav';
 import SideBalance from './SideBalance/SideBalance';
 import SideCurrency from './SideCurrency/SideCurrency';
+import { useMediaQuery } from '@react-hook/media-query';
 import {
     MainContainer,
     UpperContainer,
@@ -8,19 +9,29 @@ import {
     Graphics,
     Line,
 } from './SideBar.styled';
+import { useLocation } from 'react-router-dom';
 
 const SideBar = () => {
+    const isSmallScreen = useMediaQuery('(max-width: 768px)');
+    const location = useLocation()
 
     return (
         <MainContainer>
             <UpperContainer>
                 <SideNav />
-                <SideBalance />
+                {location.pathname === '/currency' ? null : <SideBalance />}
+                
             </UpperContainer>
             <DownContainer>
-                <SideCurrency />
-                <Graphics />
-                <Line />
+                {isSmallScreen === true ? (
+                    <></>
+                ) : (
+                    <>
+                        <SideCurrency />
+                        <Graphics />
+                        <Line />
+                    </>
+                )}
             </DownContainer>
         </MainContainer>
     );

@@ -32,12 +32,11 @@ export const MainContainer = styled.div`
 
 export const UpperContainer = styled.div`
     @media screen and (min-width: 320px) {
-        width: 200px;
     }
 
     @media screen and (min-width: 768px) {
         width: 400px;
-        margin: 0 32px 0 32px;
+        margin: 0 32px 20px 32px;
     }
 
     @media screen and (min-width: 1280px) {
@@ -50,9 +49,11 @@ export const UpperContainer = styled.div`
 
 export const DownContainer = styled.div`
     @media screen and (min-width: 320px) {
+        background-color: var(--select-background-color);
     }
 
     @media screen and (min-width: 768px) {
+        display: block;
         width: 336px;
         height: 214px;
         margin-right: 32px;
@@ -61,6 +62,7 @@ export const DownContainer = styled.div`
     }
 
     @media screen and (min-width: 1280px) {
+        display: block;
         width: 480px;
         height: 360px;
         background-color: var(--select-background-color);
@@ -71,19 +73,22 @@ export const Graphics = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     @media screen and (min-width: 320px) {
-        /* margin-top: 61px;
+        margin: 0 auto;
+        margin-top: 20px;
         width: 320px;
-        height: 214px;
+        height: 88px;
+        border-radius: 0;
         background-image: url(${currency_mobile});
         @media (min-device-pixel-ratio: 2) {
             background-image: url(${currency_mobile_2x});
-        } */
+        }
     }
 
     @media screen and (min-width: 768px) {
         margin-top: 15px;
         width: 336px;
-        height: 88px;
+        height: 80px;
+        border-radius: 8px;
         background-image: url(${currency_table});
         @media (min-device-pixel-ratio: 2) {
             background-image: url(${currency_table_2x});
@@ -94,6 +99,7 @@ export const Graphics = styled.div`
         margin-top: 61px;
         width: 480px;
         height: 167px;
+        border-radius: 0;
         background-image: url(${currency_desk});
         @media (min-device-pixel-ratio: 2) {
             background-image: url(${currency_desk_2x});
@@ -105,14 +111,15 @@ export const Line = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     @media screen and (min-width: 320px) {
-        /* position: relative;
+        position: relative;
+        margin: 0 auto;
         background-image: url(${line_desc_mob_1x});
-        width: 480px;
-        height: 102px;
-        top: -190px;
+        width: 320px;
+        height: 70px;
+        top: -110px;
         @media (min-device-pixel-ratio: 2) {
             background-image: url(${line_desc_mob_2x});
-        } */
+        }
     }
 
     @media screen and (min-width: 768px) {
@@ -137,5 +144,3 @@ export const Line = styled.div`
         }
     }
 `;
-
-
