@@ -32,7 +32,7 @@ const Statistics = () => {
 
     console.log(userData);
     console.log(financeData);
-    console.log(totalBalanceData);
+
     console.log(token);
 
     // function getYear(date) {
