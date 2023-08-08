@@ -40,7 +40,7 @@ export const ModalAddTransaction = () => {
 
     const [selectedOption, setSelectedOption] = useState('Car');
     const [selectedType, setSelectedType] = useState(
-        modalData.type === 'INCOME' ? true : false
+        modalData?.type === 'INCOME' ? true : false
     );
 
     if (!!modalData) {
@@ -122,7 +122,9 @@ export const ModalAddTransaction = () => {
     };
     return (
         <ModalAddWrapper>
-            <ModalTransactionTitle>Add transaction</ModalTransactionTitle>
+            <ModalTransactionTitle>
+                {!!modalData ? 'Edit' : 'Add'} transaction
+            </ModalTransactionTitle>
             <Formik
                 validationSchema={modalTransactionsSchema}
                 onSubmit={handleSubmit}
