@@ -14,6 +14,8 @@ import LoginPage from 'pages/LoginPage/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 import Home from 'pages/Home';
 import SummaryPage from 'pages/SummaryPage';
+import SideCurrency from './SideBar/SideCurrency/SideCurrency';
+import { Graphics, Line } from './SideBar/SideBar.styled';
 
 const DashboardPage = lazy(() => import('pages/DashboardPage/DashboardPage'));
 
@@ -65,6 +67,16 @@ export const App = () => {
                         element={
                             <PrivateRoute>
                                 <SummaryPage />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route
+                        path="currency"
+                        element={
+                            <PrivateRoute>
+                                <SideCurrency />
+                                <Graphics />
+                                <Line />
                             </PrivateRoute>
                         }
                     />

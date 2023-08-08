@@ -50,7 +50,7 @@ export const RegFormStyled = styled.form`
         border: none;
     }
     h3 {
-        margin: 0 auto 52px;
+        margin: 0 auto 40px;
         color: var(--white, #fbfbfb);
         font-size: 27px;
         font-style: normal;
@@ -60,8 +60,17 @@ export const RegFormStyled = styled.form`
     @media only screen and (min-width: 768px) {
         width: 409px;
         margin: 0 auto;
-        
+
+        input {
+        height: 36px;
+        padding: 0 20px 8px;
+        box-sizing: border-box;
     }
+
+    svg{
+        margin-bottom: 8px;
+    }
+        }
 `;
 
 export const NavBtn = styled.button`
@@ -76,6 +85,8 @@ export const NavBtn = styled.button`
 
     @media only screen and (min-width: 768px) {
         width: 300px;
+        margin: 0 auto;
+        display: block;
     }
 `;
 export const Button = styled.button`
@@ -85,6 +96,7 @@ export const Button = styled.button`
     flex-shrink: 0;
     transition: background-color 0.5s;
     border-radius: 20px;
+    display: block;
     background: var(
         --button-gradient,
         linear-gradient(167deg, #ffc727 0%, #9e40ba 61.46%, #7000ff 90.54%)
@@ -96,6 +108,7 @@ export const Button = styled.button`
     @media only screen and (max-width: 767px) {
     }
     @media only screen and (min-width: 768px) {
+        margin: 40px auto 20px;
         width: 300px;
     }
 `;

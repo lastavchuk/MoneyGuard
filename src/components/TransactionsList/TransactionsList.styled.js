@@ -102,8 +102,18 @@ export const StyledTransactionsList = styled.div`
     @media only screen and (min-width: 768px) {
         display: block;
         max-height: 318px;
-        overflow: scroll;
+        overflow: auto;
         width: 704px;
+        &::-webkit-scrollbar {
+            width: 8px;
+            border-radius: 4px;
+            background-color: #734aef;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--balance-background-color);
+            border-radius: 4px;
+        }
 
         .income {
             font-weight: 600;
@@ -197,9 +207,9 @@ export const StyledTransactionsList = styled.div`
             text-align: center;
         }
 
-        td:nth-child(4) {
+        /* td:nth-child(4) {
             text-transform: capitalize;
-        }
+        } */
 
         td:last-child {
             text-align: right;
