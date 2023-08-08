@@ -10,7 +10,12 @@ import {
 
 const financeSlice = createSlice({
     name: 'finance',
-    initialState: { totalBalance: 0, data: null, categories: null },
+    initialState: {
+        totalBalance: 0,
+        data: null,
+        categories: null,
+        summary: null,
+    },
     extraReducers: builder => {
         builder
             .addCase(createTransactionThunk.fulfilled, (state, action) => {})
@@ -31,7 +36,8 @@ const financeSlice = createSlice({
                 }
             )
             .addCase(getSummaryTransactionThunk.fulfilled, (state, action) => {
-                state.totalBalance = action.payload;
+                state.totalBalance = action.payload.periodTotal;
+                state.summary = action.payload;
             });
     },
 });
