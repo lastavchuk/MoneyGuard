@@ -16,3 +16,9 @@ export const selectCategoriesSummary = state =>state.transaction.categoriesSumma
 export const selectIsLoggedIn = state => state.auth.isLoggedIn;
 export const selectIsRefreshing = state => state.auth.isRefreshing;
 export const selectUser = state => state.auth.user;
+
+export const selectUserData = state => state.user.userData;
+
+export const selectUserToken = state => state.user.token;
+
+export const selectUserIsAuth = state => state.user.isAuth;
