@@ -1,28 +1,31 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import {
     NavDiv,
-    NavList,
-    NavItem,
     StyledLink,
     SvgHome,
     SvgStat,
-    SideNavText,
+    SvgHomeActive,
+    SvgStatActive
 } from './SideNav.styled';
 
 const SideNav = () => {
+    const location = useLocation();
+    
+
     return (
+        
         <NavDiv>
             <ul>
                 <li>
                     <StyledLink to="/">
-                        <SvgHome />
-                        <SideNavText>Home</SideNavText>
+                        {location.pathname === '/' ? <SvgHomeActive /> : <SvgHome />} 
+                        Home
                     </StyledLink>
                 </li>
                 <li>
                     <StyledLink to="statistics">
-                        <SvgStat />
-                        <SideNavText>Statistics</SideNavText>
+                        {location.pathname === '/statistics' ? <SvgStatActive /> : <SvgStat />}
+                        Statistics
                     </StyledLink>
                 </li>
             </ul>

@@ -1,30 +1,67 @@
 import styled from 'styled-components';
 
 export const Table = styled.table`
-    margin-left: 84px;
-    margin-right: 131px;
+    @media screen and (min-width: 320px) {
+    }
+
+    @media screen and (min-width: 768px) {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        margin-left: 84px;
+        margin-right: 131px;
+    }
 `;
 
 export const Category = styled.div`
-    display: flex;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 16px 131px 16px 62px;
+    @media screen and (min-width: 320px) {
+    }
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 12px 20px 12px 20px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        display: flex;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 16px 131px 16px 62px;
+    }
 `;
 
-export const THead = styled.thead``;
-
 export const Currency = styled.p`
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    margin-right: 50px;
+    @media screen and (min-width: 320px) {
+    }
+
+    @media screen and (min-width: 768px) {
+        margin-right: 34px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        margin-right: 50px;
+    }
 `;
 
 export const Purchase = styled.p`
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    margin-right: 50px;
+    @media screen and (min-width: 320px) {
+    }
+
+    @media screen and (min-width: 768px) {
+        margin-right: 74px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        margin-right: 50px;
+    }
 `;
 
 export const Sale = styled.p`
@@ -34,24 +71,53 @@ export const Sale = styled.p`
 `;
 
 export const CurrencyTable = styled.td`
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    padding-right: 88px;
-    padding-top:24px;
+    @media screen and (min-width: 320px) {
+    }
+
+    @media screen and (min-width: 768px) {
+        padding-right: 90px;
+        padding-top: 8px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        padding-right: 88px;
+        padding-top: 24px;
+    }
 `;
 
 export const CurrencyBuy = styled.td`
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    padding-right: 61px;
-    padding-top:24px;
+    @media screen and (min-width: 320px) {
+    }
+
+    @media screen and (min-width: 768px) {
+        padding-right: 80px;
+        padding-top: 8px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        padding-right: 61px;
+        padding-top: 24px;
+    }
 `;
 
 export const CurrencySell = styled.td`
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    padding-top:24px;
+    @media screen and (min-width: 320px) {
+    }
+
+    @media screen and (min-width: 768px) {
+        padding-top: 8px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        padding-top: 24px;
+    }
 `;
