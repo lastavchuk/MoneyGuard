@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const Table = styled.table`
     @media screen and (min-width: 320px) {
+        margin: 0 auto;
     }
 
     @media screen and (min-width: 768px) {
-        margin-right: 20px;
-        margin-left: 20px;
+        margin: 0 auto;
     }
 
     @media screen and (min-width: 1280px) {
@@ -17,6 +17,10 @@ export const Table = styled.table`
 
 export const Category = styled.div`
     @media screen and (min-width: 320px) {
+        display: flex;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 13px 20px 13px 20px;
+        justify-content: space-around;
     }
 
     @media screen and (min-width: 768px) {
@@ -34,9 +38,16 @@ export const Category = styled.div`
 
 export const Currency = styled.p`
     @media screen and (min-width: 320px) {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        margin-right: 26px;
     }
 
     @media screen and (min-width: 768px) {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
         margin-right: 34px;
     }
 
@@ -50,9 +61,16 @@ export const Currency = styled.p`
 
 export const Purchase = styled.p`
     @media screen and (min-width: 320px) {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        margin-right: 66px;
     }
 
     @media screen and (min-width: 768px) {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
         margin-right: 74px;
     }
 
@@ -72,9 +90,17 @@ export const Sale = styled.p`
 
 export const CurrencyTable = styled.td`
     @media screen and (min-width: 320px) {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        padding-right: 88px;
+        padding-top: 8px;
     }
 
     @media screen and (min-width: 768px) {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
         padding-right: 90px;
         padding-top: 8px;
     }
@@ -90,9 +116,17 @@ export const CurrencyTable = styled.td`
 
 export const CurrencyBuy = styled.td`
     @media screen and (min-width: 320px) {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        padding-right: 76px;
+        padding-top: 8px;
     }
 
     @media screen and (min-width: 768px) {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
         padding-right: 80px;
         padding-top: 8px;
     }
@@ -108,6 +142,7 @@ export const CurrencyBuy = styled.td`
 
 export const CurrencySell = styled.td`
     @media screen and (min-width: 320px) {
+        padding-top: 8px;
     }
 
     @media screen and (min-width: 768px) {
