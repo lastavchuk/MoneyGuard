@@ -8,6 +8,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.3",
+    "@react-hook/media-query": "^1.1.1",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
     "chart.js": "^4.3.3",
