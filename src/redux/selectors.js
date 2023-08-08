@@ -25,3 +25,6 @@ export const selectUserToken = state => state.user.token;
 
 export const selectUserIsAuth = state => state.user.isAuth;
 export const selectSummary = state => state.finance.summary;
+
+export const selectIsModalEditTransactionOpen = state =>
+  state.global.isModalEditTransactionOpen;

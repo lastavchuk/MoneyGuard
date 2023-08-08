@@ -3,7 +3,7 @@
 import PrivateRoute from 'guards/PrivateRoute';
 import PublicRoute from 'guards/PublicRoute';
 import SharedLayout from 'components/SharedLayout/SharedLayout';
-import { useEffect } from 'react';
+import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
 import { refreshUserThunk } from 'redux/auth/userThunks';
@@ -14,6 +14,8 @@ import LoginPage from 'pages/LoginPage/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 import Home from 'pages/Home';
 import SummaryPage from 'pages/SummaryPage';
+
+const DashboardPage = lazy(() => import('pages/DashboardPage/DashboardPage'));
 
 export const App = () => {
     const dispatch = useDispatch();
@@ -44,6 +46,14 @@ export const App = () => {
                         </PublicRoute>
                     }
                 />
+                            <Route
+              element={
+                <PrivateRoute
+                  component={<DashboardPage />}
+                  redirectTo="/login"
+                />
+              }
+            ></Route>
                 {/* <Route path="/home" element={<Home />} /> */}
                 <Route path="/" element={<SharedLayout />}>
                     <Route
