@@ -1,10 +1,10 @@
 import { CustomSelect } from 'components/CustomSelect/CustomSelect';
 import { Button } from 'components/Button/Button';
 import { Formik } from 'formik';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModalAddTransaction } from 'redux/globalSlice';
-import { selectCategories } from 'redux/selectors';
+import { selectCategories, selectModalData } from 'redux/selectors';
 import {
     ButtonWrapper,
     InputWrapper,
@@ -22,51 +22,78 @@ import {
     StyledForm,
 } from './ModaAddlTransaction.styled';
 import { useCategoriesType } from 'hooks/categoriesFilter';
-// import { transactionsSchema } from 'services/validation/validationTransactions';
 import { modalTransactionsSchema } from 'services/validation/validationTransactions';
 import { FormError } from 'components/FormError/FormError';
 import { toast } from 'react-toastify';
 import {
     createTransactionThunk,
-    getTransactionCategoriesThunk,
+    updTransactionThunk,
 } from 'redux/finance/financeThunks';
 
+let initialValues;
+let textButton = 'ADD';
+
 export const ModalAddTransaction = () => {
+    const modalData = useSelector(selectModalData);
+
     const dispatch = useDispatch();
 
     const [selectedOption, setSelectedOption] = useState('Car');
-    const [selectedType, setSelectedType] = useState(false);
+    const [selectedType, setSelectedType] = useState(
+        modalData.type === 'INCOME' ? true : false
+    );
 
-    useEffect(() => {
-        dispatch(getTransactionCategoriesThunk());
-    }, [dispatch]);
+    if (!!modalData) {
+        textButton = 'SAVE';
+
+        initialValues = {
+            transactionDate: modalData.transactionDate,
+            type: modalData.type,
+            categoryId: modalData.categoryId,
+            comment: modalData.comment,
+            amount:
+                modalData.amount < 0 ? modalData.amount * -1 : modalData.amount,
+        };
+    } else {
+        initialValues = {
+            transactionDate: new Date().toISOString().slice(0, 10),
+            type: selectedType ? 'INCOME' : 'EXPENSE',
+            categoryId: '',
+            comment: '',
+            amount: '',
+        };
+    }
+
+    // useEffect(() => {
+    //     dispatch(getTransactionCategoriesThunk());
+    // }, [dispatch]);
 
     const allCategories = useSelector(selectCategories);
     const [expenseCategories, incomeCategories] =
         useCategoriesType(allCategories);
 
-    const initialValues = {
-        transactionDate: new Date().toISOString().slice(0, 10),
-        type: selectedType ? 'INCOME' : 'EXPENSE',
-        categoryId: '',
-        comment: '',
-        amount: '',
-    };
     const handleSubmit = (value, { resetForm }) => {
         const defCategoryId = 'c9d9e447-1b83-4238-8712-edc77b18b739';
         const newData = {
             ...value,
             type: selectedType ? 'INCOME' : 'EXPENSE',
-            amount: `${
-                !selectedType ? Number(value.amount) * -1 : Number(value.amount)
-            }`,
-            categoryId: `${
-                !selectedType
-                    ? selectedOption?.id ?? defCategoryId
-                    : incomeCategories[0].id
-            }`,
+            amount: !selectedType
+                ? Number(value.amount) * -1
+                : Number(value.amount),
+            categoryId: !selectedType
+                ? selectedOption?.id ?? defCategoryId
+                : incomeCategories[0].id,
         };
-        dispatch(createTransactionThunk(newData))
+
+        if (!!modalData) {
+            newData.transactionId = modalData.id;
+        }
+
+        dispatch(
+            !modalData
+                ? createTransactionThunk(newData)
+                : updTransactionThunk(newData)
+        )
             .unwrap()
             .then(data =>
                 toast.success(
@@ -152,7 +179,7 @@ export const ModalAddTransaction = () => {
                     />
                     <ButtonWrapper>
                         <FormError name="amount" />
-                        <Button text="ADD" type="submit" />
+                        <Button text={textButton} type="submit" />
                         <Button
                             name="cancel"
                             text="CANCEL"
