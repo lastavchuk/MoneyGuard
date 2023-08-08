@@ -18,17 +18,28 @@ import Logotip from '../../../assests/img/logo.svg';
 
 const LoginForm = () => {
     const dispatchEvent = useDispatch();
+
+    const validationSchema = Yup.object({
+        email: Yup.string()
+            .email('Invalid email address')
+            .min(6, 'Must be at least 6 characters')
+            .max(25, 'Must be up to 25 characters')
+            .required('Required'),
+
+        password: Yup.string()
+            .min(6, 'Must be 6 characters or less')
+            .max(12, 'Must be up to 12 characters')
+            .required('Required')
+            .matches(
+                /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]),?[\s\S]{6,12}$/,
+                'Password must contain at least 6 characters, one uppercase letter, one lowercase letter, one number'
+            ),
+    });
     return (
         <LogContainer>
             <Formik
                 initialValues={{ email: '', password: '' }}
-                validationSchema={Yup.object({
-                    email: Yup.string()
-                        .email('Invalid email address')
-                        .required('Required'),
-
-                    password: Yup.string().required('Required'),
-                })}
+                validationSchema={validationSchema}
                 onSubmit={(values, { resetForm }) => {
                     dispatchEvent(loginUserThunk(values));
                     resetForm();

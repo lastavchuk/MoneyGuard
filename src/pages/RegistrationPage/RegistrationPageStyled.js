@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import backgroundMob from '../../assests/img/login_mob@1x.jpg';
-import backgroundMob2 from '../../assests/img/login_mob@2x.jpg';
+import backgroundMob from '../../assests/img/registr_mobile@1x.jpg';
+import backgroundMob2 from '../../assests/img/registr_mobile@2x.jpg';
 
 import backgroundTab from '../../assests/img/registr_tablet@1x.jpg';
 import backgroundTab2 from '../../assests/img/registr_tablet@2x.jpg';

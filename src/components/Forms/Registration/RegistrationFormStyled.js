@@ -5,7 +5,7 @@ export const RegContainer = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     margin: auto;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     width: 100vw;
     height: 100vh;
@@ -14,7 +14,7 @@ export const RegContainer = styled.div`
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
    
     h1 {
-        display: flex;
+        /* display: flex; */
         width: 182px;
         height: 40.026px;
         flex-direction: column;
@@ -40,7 +40,7 @@ export const RegContainer = styled.div`
 
 export const RegFormStyled = styled.form`
     padding-top: 50px;
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     gap: 15px;
 
@@ -50,12 +50,17 @@ export const RegFormStyled = styled.form`
         border: none;
     }
     h3 {
-        margin: 0 auto;
+        margin: 0 auto 52px;
         color: var(--white, #fbfbfb);
         font-size: 27px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
+    }
+    @media only screen and (min-width: 768px) {
+        width: 409px;
+        margin: 0 auto;
+        
     }
 `;
 

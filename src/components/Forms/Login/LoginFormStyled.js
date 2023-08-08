@@ -57,12 +57,12 @@ export const LogFormStyled = styled.form`
     }
 `;
 export const LogotipStyled = styled.div`
-    
-    margin-top:97px;
-    margin-bottom:52px;
+    margin-top: 97px;
+    margin-bottom: 52px;
     display: flex;
     flex-direction: column;
     align-items: center;
+
     h3 {
         margin: 0 auto;
         color: var(--white, #fbfbfb);
@@ -72,8 +72,10 @@ export const LogotipStyled = styled.div`
         line-height: normal;
     }
     @media only screen and (min-width: 768px) {
-        font-size: 27px;
-       
+        h3{
+            font-size: 27px;
+
+        }
         margin: 0 auto;
         width: 182px;
     }
