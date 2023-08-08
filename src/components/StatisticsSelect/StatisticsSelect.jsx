@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import { StyledSelectors } from './StatisticsSelect.styled';
-import { getAllYears } from 'services/helpers';
+
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    selectLoading,
-    selectUserIsAuth,
-    selectUserToken,
-} from 'redux/selectors';
-import { refreshUserThunk } from 'redux/auth/userThunks';
+import { selectFinanceData, selectUserIsAuth } from 'redux/selectors';
+
 import { getSummaryTransactionThunk } from 'redux/finance/financeThunks';
 
 const optionsMonth = [
@@ -26,25 +22,41 @@ const optionsMonth = [
     { value: 12, label: 'December' },
 ];
 
-const optionsYear = [
-    { value: 2022, label: '2022' },
-    { value: 2023, label: '2023' },
-];
-
 const StatisticsSelect = () => {
-    // const isAuth = useSelector(selectUserIsAuth);
-    const token = useSelector(selectUserToken);
+    const isAuth = useSelector(selectUserIsAuth);
+    const financeData = useSelector(selectFinanceData);
 
     const dispatch = useDispatch();
-    const [month, setMonth] = useState('');
-    const [year, setYear] = useState('');
-    const period = { month, year };
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+
+    const [month, setMonth] = useState(currentMonth + 1);
+    const [year, setYear] = useState(currentYear);
 
     useEffect(() => {
-        if (!token) return;
-        // dispatch(getSummaryTransactionThunk({ month: 8, year: 2023 }));
+        if (!isAuth) return;
         dispatch(getSummaryTransactionThunk({ month, year }));
-    }, [dispatch, token, month, year]);
+    }, [dispatch, isAuth, month, year]);
+
+    function getYears(date) {
+        return date.slice(0, 4);
+    }
+
+    function getAllYears() {
+        let years = [];
+        for (const { transactionDate } of financeData) {
+            const year = getYears(transactionDate);
+            if (!years.includes(year)) {
+                years.push(year);
+            }
+        }
+        years.sort();
+        return years.map(y => {
+            return { value: Number(y), label: y };
+        });
+    }
+
+    const optionsYear = getAllYears();
 
     const getMonth = () => {
         return month ? optionsMonth.find(month => month.value === month) : '';
@@ -58,27 +70,6 @@ const StatisticsSelect = () => {
     const onChangeYear = newData => {
         setYear(newData.value);
     };
-    console.log(period);
-    // const onInputChange = e => {
-    //     const name = e.target.name;
-    //     const value = e.target.value;
-    //     console.log(name);
-    //     if (name === 'month') {
-    //         setMonth(value);
-    //     } else {
-    //         setYear(value);
-    //     }
-    // };
-    // // useEffect(() => {
-    // //     if (!token) return;
-    // //     dispatch(getAllYears());
-    // // }, [dispatch, token]);
-
-    // const optionsYear = () => {
-    //     dispatch(getAllYears());
-    // };
-    // console.log(optionsYear);
-    // const optionsYear = [];
 
     return (
         <StyledSelectors>
@@ -88,6 +79,7 @@ const StatisticsSelect = () => {
                 onChange={onChangeMonth}
                 classNamePrefix="react-select"
                 options={optionsMonth}
+                placeholder={optionsMonth[currentMonth].label}
             />
             <Select
                 name="year"
@@ -95,7 +87,7 @@ const StatisticsSelect = () => {
                 onChange={onChangeYear}
                 classNamePrefix="react-select"
                 options={optionsYear}
-                placeholder=""
+                placeholder={currentYear}
             />
         </StyledSelectors>
     );

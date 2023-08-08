@@ -8,9 +8,14 @@ import {
 } from 'chart.js/auto';
 import { Doughnut } from 'react-chartjs-2';
 import { Colors } from 'chart.js';
+import { selectFinanceTotalBalance, selectSummary } from 'redux/selectors';
+import { useSelector } from 'react-redux';
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title, Colors);
 const StatisticsDiagram = () => {
+    const summary = useSelector(selectSummary);
+    const totalBalanceData = useSelector(selectFinanceTotalBalance);
+    console.log(totalBalanceData);
     // <block:actions:2>
     // const actions = [
     //     {
@@ -153,7 +158,7 @@ const StatisticsDiagram = () => {
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillText(
-                'text',
+                summary.periodTotal,
                 chart.getDatasetMeta(0).data[0].x,
                 chart.getDatasetMeta(0).data[0].y
             );
