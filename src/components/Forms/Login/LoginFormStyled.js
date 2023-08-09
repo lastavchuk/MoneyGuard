@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import ellipse from '../../../assests/img/ellipse_desk@1x.png'
+import ellipse2 from '../../../assests/img/ellipse_19desk@2x.png'
+
 export const LogContainer = styled.div`
     position: absolute;
     top: 50%;
@@ -16,6 +19,7 @@ export const LogContainer = styled.div`
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
     /* backdrop-filter: blur(50px); */
     /* background: var(--form-color); */
+
     h1 {
         display: flex;
         width: 182px;
@@ -36,29 +40,42 @@ export const LogContainer = styled.div`
         height: 570px;
         background: var(--form-color);
         backdrop-filter: blur(50px);
+        background-image: url(${ellipse});
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(${ellipse2});
     }
+    
+    }
+    
 `;
 export const LogFormStyled = styled.form`
 width: 280px;
 
-    input {
-        /* padding: 10px 15px; */
-        padding: 0 0 8px;
-        height: 36px;
-        cursor: pointer;
-        border: none;
-        box-sizing: border-box;
-    }
+input {
+    /* padding: 10px 15px; */
+    padding: 0 0 8px;
+    height: 36px;
+    cursor: pointer;
+    border: none;
+    box-sizing: border-box;
+}
 
-    svg {
-        margin: 0 20px 8px 0;
-    }
+svg {
+    margin: 0 20px 8px 0;
+}
 
-    @media only screen and (max-width: 767px) {
-    }
-    @media only screen and (min-width: 768px) {
-        padding-top: 80px;
-        width: 409px;
+@media only screen and (max-width: 767px) {
+}
+@media only screen and (min-width: 768px) {
+    padding-top: 80px;
+    width: 409px;
+    
     }
 `;
 export const LogotipStyled = styled.div`
