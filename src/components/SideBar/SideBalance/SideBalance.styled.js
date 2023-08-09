@@ -5,8 +5,9 @@ export const BalanceDiv = styled.div`
         background: var(--balance-background-color);
         box-shadow: 1px 9px 15px rgba(0, 0, 0, 0.2);
         padding: 8px 0 11px 32px;
-        margin : 0 20px 32px 20px;
+        margin: 0 auto;
         border-radius: 8px;
+        width: 280px;
     }
 
     @media screen and (min-width: 768px) {
@@ -15,6 +16,7 @@ export const BalanceDiv = styled.div`
         padding: 8px 0 11px 40px;
         border-radius: 8px;
         margin: 0;
+        width: 336px;
     }
 
     @media screen and (min-width: 1280px) {
@@ -24,6 +26,7 @@ export const BalanceDiv = styled.div`
         padding: 6px 0 8px 56px;
         border-radius: 0;
         margin: 0;
+        width: 480px;
     }
 `;
 

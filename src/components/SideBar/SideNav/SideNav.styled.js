@@ -8,6 +8,9 @@ export const NavDiv = styled.nav`
     @media screen and (min-width: 320px) {
         margin-top: 12px;
         margin-bottom: 12px;
+        width: 280px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     @media screen and (min-width: 768px) {
