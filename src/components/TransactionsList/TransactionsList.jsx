@@ -45,7 +45,7 @@ function TransactionsList({
     function onDelete(id) {
         dispatch(delTransactionThunk(id))
             .unwrap()
-            .then(data =>
+            .then(
                 toast.success(
                     'The transaction has been removed from your list.'
                 )
