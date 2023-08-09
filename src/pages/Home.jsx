@@ -6,20 +6,28 @@ import {
     getTransactionCategoriesThunk,
     delTransactionThunk,
 } from 'redux/finance/financeThunks';
-import { openModalAddTransaction } from 'redux/globalSlice';
-import { selectIsModalAddTransactionOpen, selectUserData } from 'redux/selectors';
+import {
+    closeModalAddTransaction,
+    openModalAddTransaction,
+} from 'redux/globalSlice';
+import {
+    selectIsModalAddTransactionOpen,
+    selectUserData,
+} from 'redux/selectors';
+import { ModalAddTransaction } from 'components/ModaAddlTransaction/ModaAddlTransaction';
+import { Modal } from 'components/Modal/Modal';
 // import { ModalAddTransaction } from 'components/ModaAddlTransaction/ModaAddlTransaction';
 
-
 function Home() {
-  const dispatch = useDispatch();
-  const userData = useSelector(selectUserData);
-  const isModalOpen = useSelector( selectIsModalAddTransactionOpen)
+    const dispatch = useDispatch();
+    const userData = useSelector(selectUserData);
+    const isModalOpen = useSelector(selectIsModalAddTransactionOpen);
 
     useEffect(() => {
-      if (userData){
-        dispatch(fetchAllTransactionsThunk());
-        dispatch(getTransactionCategoriesThunk());}
+        if (userData) {
+            dispatch(fetchAllTransactionsThunk());
+            dispatch(getTransactionCategoriesThunk());
+        }
     }, [dispatch, userData]);
 
     function handleOpenModal() {
@@ -34,12 +42,16 @@ function Home() {
 
     return (
         <main>
-        <HomeTab
-            onOpenModal={handleOpenModal}
-            onEditTransaction={handlerEditTransaction}
-            onDeleteTransaction={handlerDeleteTransaction}
-        />
-        {/* {isModalOpen && <ModalAddTransaction/>} */}
+            <HomeTab
+                onOpenModal={handleOpenModal}
+                onEditTransaction={handlerEditTransaction}
+                onDeleteTransaction={handlerDeleteTransaction}
+            />
+            {isModalOpen && (
+                <Modal closeReducer={closeModalAddTransaction}>
+                    <ModalAddTransaction />
+                </Modal>
+            )}
         </main>
     );
 }

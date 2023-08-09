@@ -30,10 +30,6 @@ export const StyledSharedLayout = styled.div`
     @media only screen and (min-width: 768px) {
         background-image: url(${backgroundGradientTab});
 
-        main {
-            padding: 0 32px;
-        }
-
         @media (min-device-pixel-ratio: 2),
             (min-resolution: 192dpi),
             (min-resolution: 2dppx) {
@@ -41,8 +37,18 @@ export const StyledSharedLayout = styled.div`
         }
     }
 
+    @media only screen and (max-width: 1279px) {
+        main {
+            padding: 0 32px;
+        }
+    }
+
     @media only screen and (min-width: 1280px) {
         background-image: url(${backgroundGradient});
+
+        div {
+            display: flex;
+        }
 
         @media (min-device-pixel-ratio: 2),
             (min-resolution: 192dpi),

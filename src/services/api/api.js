@@ -75,11 +75,9 @@ export async function getTransactionCategories() {
     month: 8,
     year: 2023,
 } */
-// export async function getSummaryTransaction(month, year) {
 export async function getSummaryTransaction({ month = null, year = null }) {
     const { data } = await instance.get('/transactions-summary', {
         params: { month, year },
     });
-
     return data;
 }

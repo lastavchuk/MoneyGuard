@@ -57,5 +57,8 @@ export const StyledHeader = styled.header`
             height: 30px;
             border-left: 1px solid var(--white-60);
         }
+        button:hover{
+            color: var(--white);
+        }
     }
 `;

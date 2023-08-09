@@ -20,11 +20,18 @@ const financeSlice = createSlice({
     },
     extraReducers: builder => {
         builder
-            .addCase(createTransactionThunk.fulfilled, (state, action) => {})
+            .addCase(createTransactionThunk.fulfilled, (state, action) => {
+                state.data.push(action.payload);
+            })
             .addCase(fetchAllTransactionsThunk.fulfilled, (state, action) => {
                 state.data = action.payload;
             })
-            .addCase(updTransactionThunk.fulfilled, (state, action) => {})
+            .addCase(updTransactionThunk.fulfilled, (state, action) => {
+                const idx = state.data.findIndex(
+                    el => el.id === action.payload.id
+                );
+                state.data.splice(idx, 1, action.payload);
+            })
             .addCase(delTransactionThunk.fulfilled, (state, action) => {
                 const index = state.data.findIndex(
                     transaction => transaction.id === action.payload

@@ -33,7 +33,7 @@ export const StyledTransactionsList = styled.div`
     }
 
     li:nth-child(4) p {
-        text-transform: capitalize;
+        text-align: right;
     }
 
     li:not(:last-child)::after {
@@ -75,6 +75,11 @@ export const StyledTransactionsList = styled.div`
         color: var(--white-60);
         box-shadow: none;
     }
+
+    button.edit:hover {
+        color: var(--white);
+    }
+
     button.delete {
         color: var(--white);
         background: var(--gradient-button);
@@ -102,8 +107,18 @@ export const StyledTransactionsList = styled.div`
     @media only screen and (min-width: 768px) {
         display: block;
         max-height: 318px;
-        overflow: scroll;
+        overflow: auto;
         width: 704px;
+        &::-webkit-scrollbar {
+            width: 8px;
+            border-radius: 4px;
+            background-color: #734aef;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--balance-background-color);
+            border-radius: 4px;
+        }
 
         .income {
             font-weight: 600;
@@ -120,12 +135,21 @@ export const StyledTransactionsList = styled.div`
             width: 100%;
             border-spacing: 0px;
             border-collapse: collapse;
+            max-height: 308px;
         }
 
         thead {
             height: 56px;
             background-color: var(--balance-background-color);
             backdrop-filter: var(--backdrop-filter);
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+
+        tbody {
+            height: 265px;
+            overflow: hidden;
         }
 
         th {
@@ -197,9 +221,9 @@ export const StyledTransactionsList = styled.div`
             text-align: center;
         }
 
-        td:nth-child(4) {
+        /* td:nth-child(4) {
             text-transform: capitalize;
-        }
+        } */
 
         td:last-child {
             text-align: right;
@@ -224,6 +248,7 @@ export const StyledTransactionsList = styled.div`
             left: 10px;
             right: 0;
         }
+
         td:last-child {
             padding-right: 10px;
         }
