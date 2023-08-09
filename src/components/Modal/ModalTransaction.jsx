@@ -99,7 +99,15 @@ export const ModalTransaction = () => {
                 toast.success(
                     `${
                         data.type.charAt(0) + data.type.slice(1).toLowerCase()
-                    } transaction added to your list.`
+                    } transaction ${
+                        !modalData ? 'added to' : 'updated in'
+                    } your list.`,
+                    {
+                        autoClose: 3000,
+                        pauseOnFocusLoss: true,
+                        pauseOnHover: true,
+                        theme: 'light',
+                    }
                 )
             )
             .catch(error =>
@@ -132,9 +140,7 @@ export const ModalTransaction = () => {
             >
                 <StyledForm>
                     <RadioWrapperChoose>
-                        <IncomeSpan isSelected={selectedType}>
-                            Income
-                        </IncomeSpan>
+                        <IncomeSpan selected={selectedType}>Income</IncomeSpan>
                         <RadioWrapper onClick={changeTypeOfTransaction}>
                             <StyledLabelWrapper>
                                 <RoundedButton type={selectedType.toString()}>
@@ -146,7 +152,7 @@ export const ModalTransaction = () => {
                                 </RoundedButton>
                             </StyledLabelWrapper>
                         </RadioWrapper>
-                        <ExpenseSpan isSelected={!selectedType}>
+                        <ExpenseSpan selected={!selectedType}>
                             Expense
                         </ExpenseSpan>
                     </RadioWrapperChoose>
@@ -185,7 +191,7 @@ export const ModalTransaction = () => {
                         <Button
                             name="cancel"
                             text="CANCEL"
-                            variant="secondary"
+                            $variant="secondary"
                             onClick={() => dispatch(closeModalAddTransaction())}
                         />
                     </ButtonWrapper>
