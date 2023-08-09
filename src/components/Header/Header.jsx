@@ -94,6 +94,7 @@ function Header() {
                 />
                 {isMobile ? '' : 'Exit'}
             </button>
+            <span className='animation'></span>
         </StyledHeader>
     );
 }

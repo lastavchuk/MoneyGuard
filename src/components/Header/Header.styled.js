@@ -9,6 +9,7 @@ export const StyledHeader = styled.header`
         0px -3px 2px 0px rgba(0, 0, 0, 0.1) inset;
     display: flex;
     align-items: center;
+    position: relative;
 
     div {
         text-align: center;
@@ -57,8 +58,18 @@ export const StyledHeader = styled.header`
             height: 30px;
             border-left: 1px solid var(--white-60);
         }
-        button:hover{
+        button:hover {
             color: var(--white);
         }
+        /* span.animation {
+            position: absolute;
+            display: block;
+            bottom: 0;
+            right: -100%;
+            width: 100%;
+            height: 2px;
+            animation: line 4s linear infinite;
+            animation-delay: 0.5s;
+        } */
     }
 `;

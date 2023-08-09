@@ -46,7 +46,7 @@ export const StyledSharedLayout = styled.div`
     @media only screen and (min-width: 1280px) {
         background-image: url(${backgroundGradient});
 
-        div {
+        div.container {
             display: flex;
         }
 
