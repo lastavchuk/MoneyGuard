@@ -15,6 +15,7 @@ import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 import Home from 'pages/Home';
 import SummaryPage from 'pages/SummaryPage';
 import SideCurrency from './SideBar/SideCurrency/SideCurrency';
+import { GlobalStyle } from 'services/styles/GlobalStyle';
 import { Graphics, Line } from './SideBar/SideBar.styled';
 
 const DashboardPage = lazy(() => import('pages/DashboardPage/DashboardPage'));
@@ -84,6 +85,7 @@ export const App = () => {
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
             {isLoading && <Loader />}
+            <GlobalStyle />
         </>
     );
 };
