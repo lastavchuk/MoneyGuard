@@ -66,7 +66,7 @@ const LoginForm = () => {
                                     </InputAdornment>
                                 ),
                             }}
-                            style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66" }}
+                            style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66", marginBottom: "40px", paddingLeft: "10px"}}
                             variant="standard"
                             name="email"
                             type="email"
@@ -91,7 +91,7 @@ const LoginForm = () => {
                                     </InputAdornment>
                                 ),
                             }}
-                            style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66" }}
+                            style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66", paddingLeft: "10px", marginBottom: "40px" }}
                             variant="standard"
                             name="password"
                             type="password"
@@ -106,7 +106,7 @@ const LoginForm = () => {
                             }
                         />
 
-                        <Button type="submit">LOG IN</Button>
+                        <Button type="submit" className='login'>LOG IN</Button>
 
                         <Link to="/register">
                             <NavBtn>REGISTER</NavBtn>

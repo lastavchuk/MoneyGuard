@@ -1,18 +1,13 @@
 import styled from 'styled-components';
 export const RegContainer = styled.div`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: auto;
     /* display: flex; */
-    justify-content: center;
-    width: 100vw;
+    /* justify-content: center; */
+    width: 100%;
     height: 100vh;
     border-radius: 8px;
     /* form effects */
     box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-   
+
     h1 {
         /* display: flex; */
         width: 182px;
@@ -30,12 +25,16 @@ export const RegContainer = styled.div`
     @media only screen and (max-width: 767px) {
     }
     @media only screen and (min-width: 768px) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: auto;
         width: 533px;
         height: 613px;
         background: var(--form-color);
         backdrop-filter: blur(50px);
     }
-   
 `;
 
 export const RegFormStyled = styled.form`
@@ -43,9 +42,11 @@ export const RegFormStyled = styled.form`
     /* display: flex; */
     flex-direction: column;
     gap: 15px;
+    width: 280px;
+    margin: 0 auto;
 
     input {
-        padding: 10px 15px;
+        padding: 0 20px 8px;
         cursor: pointer;
         border: none;
     }
@@ -57,20 +58,24 @@ export const RegFormStyled = styled.form`
         font-weight: 400;
         line-height: normal;
     }
+
+    svg {
+        margin: 0 0 8px 0;
+    }
+
     @media only screen and (min-width: 768px) {
         width: 409px;
-        margin: 0 auto;
 
         input {
-        height: 36px;
-        padding: 0 20px 8px;
-        box-sizing: border-box;
-    }
-
-    svg{
-        margin-bottom: 8px;
-    }
+            height: 36px;
+            padding: 0 20px 8px;
+            box-sizing: border-box;
         }
+
+        svg {
+            margin: 0px 0px 8px 0px;
+        }
+    }
 `;
 
 export const NavBtn = styled.button`
@@ -102,13 +107,15 @@ export const Button = styled.button`
         linear-gradient(167deg, #ffc727 0%, #9e40ba 61.46%, #7000ff 90.54%)
     );
     box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
-    margin-top: 10px;
+    margin-bottom: 20px;
     padding: 13px 112px;
 
-    @media only screen and (max-width: 767px) {
-    }
     @media only screen and (min-width: 768px) {
         margin: 40px auto 20px;
         width: 300px;
+
+        &.login {
+            margin: 12px auto 20px;
+        }
     }
 `;

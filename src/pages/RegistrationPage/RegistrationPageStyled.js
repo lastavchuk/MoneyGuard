@@ -10,7 +10,7 @@ import backgroundDeck from '../../assests/img/registr_desktop@1x.jpg';
 import backgroundDeck2 from '../../assests/img/registr_desktop@2x.jpg';
 
 export const RegPageContainer = styled.div`
-   width: 100vw;
+  max-width: 100vw;
   height: 100vh;
   background-image: url(${backgroundMob});
   background-size: cover;

@@ -9,10 +9,12 @@ function SharedLayout() {
     return (
         <StyledSharedLayout>
             <Header />
-            <SideBar />
+            <div className='container'>
+                <SideBar />
             <Suspense fallback={<Loader />}>
-                <Outlet />
+                    <Outlet />
             </Suspense>
+                </div>
             {/* <Footer /> */}
         </StyledSharedLayout>
     );
