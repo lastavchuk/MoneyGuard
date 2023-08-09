@@ -103,7 +103,7 @@ export const ModalTransaction = () => {
                         !modalData ? 'added to' : 'updated in'
                     } your list.`,
                     {
-                        autoClose: 3000,
+                        autoClose: 2000,
                         pauseOnFocusLoss: true,
                         pauseOnHover: true,
                         theme: 'light',
