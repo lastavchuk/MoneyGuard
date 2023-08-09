@@ -2,13 +2,15 @@ import styled from 'styled-components';
 
 export const StyledStatisticsTable = styled.div`
     margin-bottom: 46px;
+
     .statistics-header {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        width: 395px;
+        width: 280px;
         height: 56px;
+        padding: 16px;
         margin-top: 20px;
 
         border-radius: 8px;
@@ -16,13 +18,21 @@ export const StyledStatisticsTable = styled.div`
         box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
         backdrop-filter: blur(50px);
         & p {
-            color: #fbfbfb;
-            font-family: Poppins;
             font-size: 16px;
             font-style: normal;
             font-weight: 600;
             line-height: normal;
             padding: 16px;
+        }
+    }
+    @media only screen and (min-width: 768px) {
+        .statistics-header {
+            width: 336px;
+        }
+    }
+    @media only screen and (min-width: 1280px) {
+        .statistics-header {
+            width: 395px;
         }
     }
 `;
@@ -35,10 +45,8 @@ export const StyledStatisticsList = styled.ul`
         flex-direction: row;
         align-items: center;
         justify-content: start;
-        width: 395px;
+        width: 280px;
         padding: 16px;
-        color: #fbfbfb;
-        font-family: Poppins;
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
@@ -48,7 +56,6 @@ export const StyledStatisticsList = styled.ul`
         width: 24px;
         height: 24px;
         border-radius: 2px;
-        background-color: rgba(110, 120, 232, 1);
     }
     .category-sum {
         margin-left: auto;
@@ -59,12 +66,28 @@ export const StyledStatisticsList = styled.ul`
 
     .gradient {
         height: 2px;
-        width: 395px;
+        width: 280px;
         /* Gradient starts from rgba(255, 255, 255, 0.2) at the top to rgba(255, 255, 255, 0.41) at the bottom. */
         background: linear-gradient(
             rgba(255, 255, 255, 0.2),
             rgba(255, 255, 255, 0.41)
         );
+    }
+    @media only screen and (min-width: 768px) {
+        & li {
+            width: 336px;
+        }
+        .gradient {
+            width: 336px;
+        }
+    }
+    @media only screen and (min-width: 1280px) {
+        & li {
+            width: 395px;
+        }
+        .gradient {
+            width: 395px;
+        }
     }
 `;
 
@@ -76,10 +99,8 @@ export const StyledStatisticsTotal = styled.ul`
         flex-direction: row;
         align-items: center;
         justify-content: start;
-        width: 395px;
-        padding: 16px 0 0 0;
-        color: #fbfbfb;
-        font-family: Poppins;
+        width: 280px;
+        padding: 16px 16px 0;
         font-size: 14px;
         font-style: normal;
         font-weight: 400;
@@ -114,5 +135,16 @@ export const StyledStatisticsTotal = styled.ul`
         font-style: normal;
         font-weight: 600;
         line-height: normal;
+    }
+    @media only screen and (min-width: 768px) {
+        & li {
+            width: 336px;
+        }
+    }
+
+    @media only screen and (min-width: 1280px) {
+        & li {
+            width: 395px;
+        }
     }
 `;

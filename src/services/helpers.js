@@ -1,6 +1,35 @@
 import { fetchAllTransactions } from './api/api';
 import { getMonoCurrency, getPrivatCurrency } from './api/apiCurrency';
 
+export const optionsMonth = [
+    { value: 1, label: 'January' },
+    { value: 2, label: 'February' },
+    { value: 3, label: 'March' },
+    { value: 4, label: 'April' },
+    { value: 5, label: 'May' },
+    { value: 6, label: 'June' },
+    { value: 7, label: 'July' },
+    { value: 8, label: 'August' },
+    { value: 9, label: 'September' },
+    { value: 10, label: 'October' },
+    { value: 11, label: 'November' },
+    { value: 12, label: 'December' },
+];
+
+export const colors = [
+    'rgb(129, 225, 255)',
+    'rgb(253, 148, 152)',
+    'rgb(110, 120, 232)',
+    'rgb(254, 208, 87)',
+    'rgb(183, 132, 167)',
+    'rgb(0, 173, 132)',
+    'rgb(243, 71, 35)',
+    'rgb(255, 216, 208)',
+    'rgb(36, 204, 167)',
+    'rgb(197, 186, 255)',
+    'rgb(0, 191, 255)',
+];
+
 function getYear(date) {
     return date.slice(0, 4);
 }

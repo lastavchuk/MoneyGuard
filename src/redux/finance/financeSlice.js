@@ -14,7 +14,9 @@ const financeSlice = createSlice({
         totalBalance: 0,
         data: null,
         categories: null,
-        summary: null,
+        categoriesSummary: [],
+        incomeSummary: null,
+        expenseSummary: null,
     },
     extraReducers: builder => {
         builder
@@ -37,7 +39,9 @@ const financeSlice = createSlice({
             )
             .addCase(getSummaryTransactionThunk.fulfilled, (state, action) => {
                 state.totalBalance = action.payload.periodTotal;
-                state.summary = action.payload;
+                state.incomeSummary = action.payload.incomeSummary;
+                state.expenseSummary = action.payload.expenseSummary;
+                state.categoriesSummary = action.payload.categoriesSummary;
             });
     },
 });
