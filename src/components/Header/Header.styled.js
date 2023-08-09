@@ -45,8 +45,8 @@ export const StyledHeader = styled.header`
     }
 
     button:hover {
-            color: var(--white);
-        }
+        color: var(--white);
+    }
 
     @media only screen and (min-width: 768px) {
         height: 80px;

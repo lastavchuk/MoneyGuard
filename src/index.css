@@ -75,6 +75,14 @@ address {
     }
 }
 
+@keyframes gradientMove {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }}
+
 .visually-hidden {
     position: absolute;
     width: 1px;
