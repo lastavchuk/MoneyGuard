@@ -44,9 +44,13 @@ export const StyledHeader = styled.header`
         text-align: right;
     }
 
+    button:hover {
+            color: var(--white);
+        }
+
     @media only screen and (min-width: 768px) {
         height: 80px;
-        padding: 16px;
+        padding: 16px 32px;
         p {
             font-size: 17px;
         }
@@ -58,9 +62,6 @@ export const StyledHeader = styled.header`
             height: 30px;
             border-left: 1px solid var(--white-60);
         }
-        button:hover {
-            color: var(--white);
-        }
         /* span.animation {
             position: absolute;
             display: block;
@@ -71,5 +72,9 @@ export const StyledHeader = styled.header`
             animation: line 4s linear infinite;
             animation-delay: 0.5s;
         } */
+    }
+
+    @media only screen and (min-width: 1280px) {
+        padding: 16px;
     }
 `;
