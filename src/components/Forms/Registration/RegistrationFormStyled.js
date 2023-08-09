@@ -43,6 +43,8 @@ export const RegFormStyled = styled.form`
     /* display: flex; */
     flex-direction: column;
     gap: 15px;
+    width: 280px;
+    margin: 0 auto;
 
     input {
         padding: 10px 15px;
@@ -59,7 +61,6 @@ export const RegFormStyled = styled.form`
     }
     @media only screen and (min-width: 768px) {
         width: 409px;
-        margin: 0 auto;
 
         input {
         height: 36px;
@@ -102,11 +103,9 @@ export const Button = styled.button`
         linear-gradient(167deg, #ffc727 0%, #9e40ba 61.46%, #7000ff 90.54%)
     );
     box-shadow: 1px 9px 15px 0px rgba(0, 0, 0, 0.2);
-    margin-top: 10px;
+    margin-bottom: 20px;
     padding: 13px 112px;
 
-    @media only screen and (max-width: 767px) {
-    }
     @media only screen and (min-width: 768px) {
         margin: 40px auto 20px;
         width: 300px;
