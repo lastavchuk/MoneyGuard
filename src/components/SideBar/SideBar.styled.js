@@ -19,7 +19,7 @@ export const MainContainer = styled.div`
 
     @media screen and (min-width: 768px) {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
     }
 
     @media screen and (min-width: 1280px) {
@@ -35,7 +35,7 @@ export const UpperContainer = styled.div`
     }
 
     @media screen and (min-width: 768px) {
-        width: 400px;
+        width: 336px;
         margin: 0 32px 20px 32px;
     }
 

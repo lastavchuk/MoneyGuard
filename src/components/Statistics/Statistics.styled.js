@@ -22,7 +22,7 @@ export const StyledStatistics = styled.div`
     .stat-cont {
         display: flex;
         flex-direction: column;
-        margin: auto 0;
+        margin: 0 auto;
     }
     .stat-table {
         margin: 32px auto 0;
@@ -33,12 +33,30 @@ export const StyledStatistics = styled.div`
         }
         .stat-cont {
             flex-direction: row;
-            margin-top: 20px;
         }
         .stat-table {
-            margin-left: 32px;
+            margin: 0 32px;
+        }
+        .stat-diag {
+            width: 336px;
+            position: relative;
+            top: -20px;
+            margin-left: 12px;
         }
     }
     @media only screen and (min-width: 1280px) {
+        padding: 0;
+        padding-top: 97px;
+        padding-left: 69px;
+        .stat-diag {
+            margin-left: 0;
+            width: 288px;
+            /* position: relative; */
+            top: -65px;
+        }
+        .stat-table {
+            margin-right: 0;
+            margin-left: 32px;
+        }
     }
 `;
