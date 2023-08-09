@@ -1,19 +1,23 @@
-import HomeTab from '../components/HomeTab/HomeTab';
-import { fetchAllTransactionsThunk } from 'redux/finance/financeThunks';
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import {
-    getTransactionCategoriesThunk,
-    delTransactionThunk,
-} from 'redux/finance/financeThunks';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
     closeModalAddTransaction,
     openModalAddTransaction,
 } from 'redux/globalSlice';
+
+import {
+    getTransactionCategoriesThunk,
+    delTransactionThunk,
+    fetchAllTransactionsThunk,
+} from 'redux/finance/financeThunks';
+
 import {
     selectIsModalAddTransactionOpen,
     selectUserData,
 } from 'redux/selectors';
+
+import HomeTab from 'components/HomeTab/HomeTab';
 import { Modal } from 'components/Modal/Modal';
 import { ModalTransaction } from 'components/Modal/ModalTransaction';
 
