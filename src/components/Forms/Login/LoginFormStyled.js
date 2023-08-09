@@ -23,7 +23,6 @@ export const LogContainer = styled.div`
         flex-direction: column;
         justify-content: center;
         /* color: var(--white, #fbfbfb); */
-        font-family: Poppins;
         font-size: 26.963px;
         font-style: normal;
         font-weight: 400;
@@ -40,31 +39,36 @@ export const LogContainer = styled.div`
     }
 `;
 export const LogFormStyled = styled.form`
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+width: 280px;
 
     input {
-        padding: 10px 15px;
+        /* padding: 10px 15px; */
+        padding: 0 0 8px;
+        height: 36px;
         cursor: pointer;
         border: none;
+        box-sizing: border-box;
+    }
+
+    svg {
+        margin: 0 20px 8px 0;
     }
 
     @media only screen and (max-width: 767px) {
     }
     @media only screen and (min-width: 768px) {
-        padding-top: 50px;
+        padding-top: 80px;
+        width: 409px;
     }
 `;
 export const LogotipStyled = styled.div`
     margin-top: 97px;
-    margin-bottom: 52px;
     display: flex;
     flex-direction: column;
     align-items: center;
-
+    
     h3 {
-        margin: 0 auto;
+        margin: 0 auto 52px;
         color: var(--white, #fbfbfb);
         font-size: 19px;
         font-style: normal;
