@@ -35,8 +35,8 @@ function TransactionsList({
     }
 
     function formatComment(comment) {
-        return comment.length > 25
-            ? comment.split('').splice(0, 25).join('') + '...'
+        return comment.length > 21
+            ? comment.split('').splice(0, 21).join('') + '...'
             : comment;
     }
 

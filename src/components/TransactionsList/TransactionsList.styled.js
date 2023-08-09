@@ -33,7 +33,7 @@ export const StyledTransactionsList = styled.div`
     }
 
     li:nth-child(4) p {
-        text-transform: capitalize;
+        text-align: right;
     }
 
     li:not(:last-child)::after {
@@ -130,12 +130,21 @@ export const StyledTransactionsList = styled.div`
             width: 100%;
             border-spacing: 0px;
             border-collapse: collapse;
+            max-height: 308px;
         }
 
         thead {
             height: 56px;
             background-color: var(--balance-background-color);
             backdrop-filter: var(--backdrop-filter);
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+
+        tbody{
+            height: 265px;
+            overflow: hidden;
         }
 
         th {
@@ -234,6 +243,8 @@ export const StyledTransactionsList = styled.div`
             left: 10px;
             right: 0;
         }
+
+
         td:last-child {
             padding-right: 10px;
         }
