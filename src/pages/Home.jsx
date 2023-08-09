@@ -6,12 +6,16 @@ import {
     getTransactionCategoriesThunk,
     delTransactionThunk,
 } from 'redux/finance/financeThunks';
-import { openModalAddTransaction } from 'redux/globalSlice';
+import {
+    closeModalAddTransaction,
+    openModalAddTransaction,
+} from 'redux/globalSlice';
 import {
     selectIsModalAddTransactionOpen,
     selectUserData,
 } from 'redux/selectors';
 import { ModalAddTransaction } from 'components/ModaAddlTransaction/ModaAddlTransaction';
+import { Modal } from 'components/Modal/Modal';
 // import { ModalAddTransaction } from 'components/ModaAddlTransaction/ModaAddlTransaction';
 
 function Home() {
@@ -43,7 +47,11 @@ function Home() {
                 onEditTransaction={handlerEditTransaction}
                 onDeleteTransaction={handlerDeleteTransaction}
             />
-            {isModalOpen && <ModalAddTransaction />}
+            {isModalOpen && (
+                <Modal closeReducer={closeModalAddTransaction}>
+                    <ModalAddTransaction />
+                </Modal>
+            )}
         </main>
     );
 }
