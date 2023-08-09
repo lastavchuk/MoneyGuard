@@ -75,6 +75,11 @@ export const StyledTransactionsList = styled.div`
         color: var(--white-60);
         box-shadow: none;
     }
+
+    button.edit:hover {
+        color: var(--white);
+    }
+
     button.delete {
         color: var(--white);
         background: var(--gradient-button);
@@ -142,7 +147,7 @@ export const StyledTransactionsList = styled.div`
             z-index: 2;
         }
 
-        tbody{
+        tbody {
             height: 265px;
             overflow: hidden;
         }
@@ -243,7 +248,6 @@ export const StyledTransactionsList = styled.div`
             left: 10px;
             right: 0;
         }
-
 
         td:last-child {
             padding-right: 10px;
