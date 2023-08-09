@@ -3,9 +3,11 @@ import { IoExitOutline } from 'react-icons/io5';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsModalLogoutOpen, selectUserData } from 'redux/selectors';
-import { closeModalLogout, openModalLogout } from 'redux/globalSlice';
+import { closeModalLogout } from 'redux/globalSlice';
 import { ModalLogout } from 'components/Modal/ModalLogout';
 import { Modal } from 'components/Modal/Modal';
+import { logOutUserThunk } from 'redux/auth/userThunks';
+import { toast } from 'react-toastify';
 // import logo from "../../assests/images/symbol-defs.svg#icon-logo_MoneyGuard";
 
 function Header() {
@@ -15,7 +17,8 @@ function Header() {
     const dispatch = useDispatch();
 
     const handleLogout = () => {
-        dispatch(openModalLogout());
+        dispatch(logOutUserThunk())
+        toast.success("You logged out is successfully.");
     };
 
     return (
