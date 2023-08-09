@@ -47,13 +47,7 @@ function TransactionsList({
             .unwrap()
             .then(data =>
                 toast.success(
-                    'The transaction has been removed from your list.',
-                    {
-                        autoClose: 3000,
-                        pauseOnFocusLoss: true,
-                        pauseOnHover: true,
-                        theme: 'light',
-                    }
+                    'The transaction has been removed from your list.'
                 )
             );
     }
