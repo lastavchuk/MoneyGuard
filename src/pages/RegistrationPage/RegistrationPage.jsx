@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import RegistrationForm from 'components/Forms/Registration/RegistrationForm';
 import { RegPageContainer } from './RegistrationPageStyled';
+import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import { selectError } from 'redux/selectors';
 
 function RegistrationPage() {
+    const error = useSelector(selectError);
+
+    useEffect(() => {
+        if (error) {
+            toast.info(error.message);
+        }
+    }, [error]);
+
     return (
         <RegPageContainer>
             {/* <LogoStyled>
