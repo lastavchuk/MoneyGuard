@@ -6,6 +6,7 @@ import SharedLayout from 'components/SharedLayout/SharedLayout';
 import { useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
+import { useMediaQuery } from 'react-responsive';
 import { refreshUserThunk } from 'redux/auth/userThunks';
 import { selectLoading, selectUserToken } from 'redux/selectors';
 import { useSelector } from 'react-redux';
@@ -13,16 +14,17 @@ import Loader from './Loader/Loader';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 import Home from 'pages/Home';
-import SummaryPage from 'pages/SummaryPage';
+
 import SideCurrency from './SideBar/SideCurrency/SideCurrency';
 import { GlobalStyle } from 'services/styles/GlobalStyle';
 import { Graphics, Line } from './SideBar/SideBar.styled';
 
 const DashboardPage = lazy(() => import('pages/DashboardPage/DashboardPage'));
+const SummaryPage = lazy(() => import('pages/SummaryPage'));
 
 export const App = () => {
     const dispatch = useDispatch();
-
+    const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
     const isLoading = useSelector(selectLoading);
     const token = useSelector(selectUserToken);
     useEffect(() => {
@@ -82,6 +84,17 @@ export const App = () => {
                         }
                     />
                 </Route>
+                <Route
+                path="currency"
+                element={
+                  <PrivateRoute
+                    component={
+                      isMobile ? <SummaryPage /> : <Navigate to="/" />
+                    }
+                    redirectTo="/login"
+                  />
+                }
+              />
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
             {isLoading && <Loader />}
