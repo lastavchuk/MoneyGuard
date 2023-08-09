@@ -228,9 +228,10 @@ const RegistrationForm = () => {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66" }}
+                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66", marginBottom: "20px"}}
                                     variant="standard"
                                     name="username"
+                                    className="username"
                                     autoComplete="username"
                                     type="text"
                                     label=""
@@ -257,7 +258,7 @@ const RegistrationForm = () => {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66" }}
+                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66", marginBottom: "20px" }}
                                     variant="standard"
                                     name="email"
                                     type="email"
@@ -286,7 +287,7 @@ const RegistrationForm = () => {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66" }}
+                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66", marginBottom: "20px"  }}
                                     variant="standard"
                                     name="password"
                                     type="password"
@@ -315,7 +316,7 @@ const RegistrationForm = () => {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66" }}
+                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66"  }}
                                     variant="standard"
                                     name="password2"
                                     type="password"
