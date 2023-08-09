@@ -18,6 +18,7 @@ export const BalanceDiv = styled.div`
     }
 
     @media screen and (min-width: 1280px) {
+        display: block !important;
         background: var(--balance-background-color);
         box-shadow: 1px 9px 15px rgba(0, 0, 0, 0.2);
         padding: 6px 0 8px 56px;

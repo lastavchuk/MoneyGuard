@@ -23,7 +23,7 @@ export const MainContainer = styled.div`
     }
 
     @media screen and (min-width: 1280px) {
-        display: block;
+        display: block !important;
         width: 481px;
         height: 641px;
         border-right: 1px solid white;
@@ -40,6 +40,7 @@ export const UpperContainer = styled.div`
     }
 
     @media screen and (min-width: 1280px) {
+        display: block !important;
         padding-bottom: 32px;
         width: 480px;
         height: 246px;
@@ -62,7 +63,7 @@ export const DownContainer = styled.div`
     }
 
     @media screen and (min-width: 1280px) {
-        display: block;
+        display: block !important;
         width: 480px;
         height: 360px;
         background-color: var(--select-background-color);
