@@ -12,15 +12,14 @@ import {
 import { useLocation } from 'react-router-dom';
 
 const SideBar = () => {
-    const isSmallScreen = useMediaQuery('(max-width: 768px)');
-    const location = useLocation()
+    const isSmallScreen = useMediaQuery('(max-width: 767px)');
+    const location = useLocation();
 
     return (
         <MainContainer>
             <UpperContainer>
                 <SideNav />
                 {location.pathname === '/currency' ? null : <SideBalance />}
-                
             </UpperContainer>
             <DownContainer>
                 {isSmallScreen === true ? (

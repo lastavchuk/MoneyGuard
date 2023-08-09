@@ -1,10 +1,13 @@
-import { CustomSelect } from 'components/CustomSelect/CustomSelect';
-import { Button } from 'components/Button/Button';
-import { Formik } from 'formik';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModalAddTransaction } from 'redux/globalSlice';
 import { selectCategories, selectModalData } from 'redux/selectors';
+
+import { Button } from 'components/Button/Button';
+import { FormError } from 'components/FormError/FormError';
+import { CustomSelect } from 'components/CustomSelect/CustomSelect';
+import { Formik } from 'formik';
+
 import {
     ButtonWrapper,
     InputWrapper,
@@ -20,11 +23,10 @@ import {
     StyledLabelWrapper,
     StyledField,
     StyledForm,
-} from './ModaAddlTransaction.styled';
+} from './ModalTransaction.styled';
+import { toast } from 'react-toastify';
 import { useCategoriesType } from 'hooks/categoriesFilter';
 import { modalTransactionsSchema } from 'services/validation/validationTransactions';
-import { FormError } from 'components/FormError/FormError';
-import { toast } from 'react-toastify';
 import {
     createTransactionThunk,
     updTransactionThunk,
@@ -33,7 +35,7 @@ import {
 let initialValues;
 let textButton = 'ADD';
 
-export const ModalAddTransaction = () => {
+export const ModalTransaction = () => {
     const modalData = useSelector(selectModalData);
 
     const dispatch = useDispatch();
@@ -99,7 +101,9 @@ export const ModalAddTransaction = () => {
                 toast.success(
                     `${
                         data.type.charAt(0) + data.type.slice(1).toLowerCase()
-                    } transaction added to your list.`
+                    } transaction ${
+                        !modalData ? 'added to' : 'updated in'
+                    } your list.`
                 )
             )
             .catch(error =>
@@ -132,9 +136,7 @@ export const ModalAddTransaction = () => {
             >
                 <StyledForm>
                     <RadioWrapperChoose>
-                        <IncomeSpan isSelected={selectedType}>
-                            Income
-                        </IncomeSpan>
+                        <IncomeSpan selected={selectedType}>Income</IncomeSpan>
                         <RadioWrapper onClick={changeTypeOfTransaction}>
                             <StyledLabelWrapper>
                                 <RoundedButton type={selectedType.toString()}>
@@ -146,7 +148,7 @@ export const ModalAddTransaction = () => {
                                 </RoundedButton>
                             </StyledLabelWrapper>
                         </RadioWrapper>
-                        <ExpenseSpan isSelected={!selectedType}>
+                        <ExpenseSpan selected={!selectedType}>
                             Expense
                         </ExpenseSpan>
                     </RadioWrapperChoose>
@@ -185,7 +187,7 @@ export const ModalAddTransaction = () => {
                         <Button
                             name="cancel"
                             text="CANCEL"
-                            variant="secondary"
+                            $variant="secondary"
                             onClick={() => dispatch(closeModalAddTransaction())}
                         />
                     </ButtonWrapper>

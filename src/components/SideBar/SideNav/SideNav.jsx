@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import {
     NavDiv,
     StyledLink,
@@ -8,13 +8,13 @@ import {
     SvgStatActive,
     SvgDollar,
     SvgDollarActive,
-    List
+    List,
 } from './SideNav.styled';
 import { useMediaQuery } from '@react-hook/media-query';
 
 const SideNav = () => {
     const location = useLocation();
-    const isSmallScreen = useMediaQuery('(max-width: 768px)');
+    const isSmallScreen = useMediaQuery('(max-width: 767px)');
 
     return (
         <NavDiv>

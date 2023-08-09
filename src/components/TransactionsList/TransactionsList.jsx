@@ -1,15 +1,18 @@
 import { StyledTransactionsList } from './TransactionsList.styled';
 import { GoPencil } from 'react-icons/go';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { selectCategories } from 'redux/selectors';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
+import { delTransactionThunk } from 'redux/finance/financeThunks';
 
 function TransactionsList({
     transactions,
     onEditTransaction,
     onDeleteTransaction,
 }) {
+    const dispatch = useDispatch();
     const categories = useSelector(selectCategories);
 
     const isDesktopOrTablet = useMediaQuery({
@@ -38,6 +41,15 @@ function TransactionsList({
         return comment.length > 21
             ? comment.split('').splice(0, 21).join('') + '...'
             : comment;
+    }
+    function onDelete(id) {
+        dispatch(delTransactionThunk(id))
+            .unwrap()
+            .then(
+                toast.success(
+                    'The transaction has been removed from your list.'
+                )
+            );
     }
 
     return (
@@ -81,7 +93,7 @@ function TransactionsList({
                                     <button
                                         className="delete"
                                         type="button"
-                                        onClick={() => onDeleteTransaction(id)}
+                                        onClick={() => onDelete(id)}
                                     >
                                         Delete
                                     </button>
@@ -165,9 +177,7 @@ function TransactionsList({
                                                 <button
                                                     className="delete"
                                                     type="button"
-                                                    onClick={() =>
-                                                        onDeleteTransaction(id)
-                                                    }
+                                                    onClick={() => onDelete(id)}
                                                 >
                                                     Delete
                                                 </button>

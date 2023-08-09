@@ -148,7 +148,7 @@ export const StyledTransactionsList = styled.div`
         }
 
         tbody {
-            height: 265px;
+            max-height: 265px;
             overflow: hidden;
         }
 

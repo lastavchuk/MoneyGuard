@@ -1,22 +1,25 @@
-import HomeTab from '../components/HomeTab/HomeTab';
-import { fetchAllTransactionsThunk } from 'redux/finance/financeThunks';
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import {
-    getTransactionCategoriesThunk,
-    delTransactionThunk,
-} from 'redux/finance/financeThunks';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
     closeModalAddTransaction,
     openModalAddTransaction,
 } from 'redux/globalSlice';
+
+import {
+    getTransactionCategoriesThunk,
+    delTransactionThunk,
+    fetchAllTransactionsThunk,
+} from 'redux/finance/financeThunks';
+
 import {
     selectIsModalAddTransactionOpen,
     selectUserData,
 } from 'redux/selectors';
-import { ModalAddTransaction } from 'components/ModaAddlTransaction/ModaAddlTransaction';
+
+import HomeTab from 'components/HomeTab/HomeTab';
 import { Modal } from 'components/Modal/Modal';
-// import { ModalAddTransaction } from 'components/ModaAddlTransaction/ModaAddlTransaction';
+import { ModalTransaction } from 'components/Modal/ModalTransaction';
 
 function Home() {
     const dispatch = useDispatch();
@@ -49,7 +52,7 @@ function Home() {
             />
             {isModalOpen && (
                 <Modal closeReducer={closeModalAddTransaction}>
-                    <ModalAddTransaction />
+                    <ModalTransaction />
                 </Modal>
             )}
         </main>

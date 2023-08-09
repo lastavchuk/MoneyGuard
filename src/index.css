@@ -55,6 +55,34 @@ address {
     font-style: normal;
 }
 
+@keyframes line {
+    0% {
+        right: -100%;
+        background: linear-gradient(270deg, transparent, #9e40bb);
+    }
+    50% {
+        right: 100%;
+      
+        background: linear-gradient(270deg, transparent, #9e40bb);
+    }
+    51%{
+        left: -100%;
+        background: linear-gradient(270deg, #efaf50, transparent);
+    }
+    100% {
+        left: 100%;
+        background: linear-gradient(270deg, #efaf50, transparent);
+    }
+}
+
+@keyframes gradientMove {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: -100% 0;
+    }}
+
 .visually-hidden {
     position: absolute;
     width: 1px;

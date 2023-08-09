@@ -1,21 +1,25 @@
-// import HomeTab from "./HomeTab/HomeTab";
+import { lazy, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Navigate, Route, Routes } from 'react-router';
 
 import PrivateRoute from 'guards/PrivateRoute';
 import PublicRoute from 'guards/PublicRoute';
-import SharedLayout from 'components/SharedLayout/SharedLayout';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Navigate, Route, Routes } from 'react-router';
+
 import { refreshUserThunk } from 'redux/auth/userThunks';
 import { selectLoading, selectUserToken } from 'redux/selectors';
-import { useSelector } from 'react-redux';
 import Loader from './Loader/Loader';
-import LoginPage from 'pages/LoginPage/LoginPage';
-import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
-import Home from 'pages/Home';
-import SummaryPage from 'pages/SummaryPage';
+
+import SharedLayout from './SharedLayout/SharedLayout';
 import SideCurrency from './SideBar/SideCurrency/SideCurrency';
 import { Graphics, Line } from './SideBar/SideBar.styled';
+import Notification from './Notification/Notification';
+
+const Home = lazy(() => import('../pages/Home'));
+const SummaryPage = lazy(() => import('../pages/SummaryPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
+const RegistrationPage = lazy(() =>
+    import('../pages/RegistrationPage/RegistrationPage')
+);
 
 export const App = () => {
     const dispatch = useDispatch();
@@ -46,7 +50,6 @@ export const App = () => {
                         </PublicRoute>
                     }
                 />
-                {/* <Route path="/home" element={<Home />} /> */}
                 <Route path="/" element={<SharedLayout />}>
                     <Route
                         index
@@ -73,6 +76,7 @@ export const App = () => {
                 </Route>
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
+            <Notification />
             {isLoading && <Loader />}
         </>
     );
