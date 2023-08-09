@@ -43,7 +43,7 @@ export const ModalLogout = () => {
                         type="button"
                         onClick={() => dispatch(closeModalLogout())}
                         text="Cancel"
-                        variant={'secondary'}
+                        $variant={'secondary'}
                     />
                 </ButtonWrapper>
             </ModalContainer>
