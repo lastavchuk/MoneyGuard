@@ -23,6 +23,8 @@ import LockIcon from '@mui/icons-material/Lock';
 import PasswordStrengthBar from 'react-password-strength-bar';
 import { registerUserThunk } from 'redux/auth/userThunks';
 
+import { toast } from 'react-toastify';
+
 const RegistrationForm = () => {
     const dispatchEvent = useDispatch();
 
@@ -49,10 +51,9 @@ const RegistrationForm = () => {
                 'Password must contain at least 6 characters, one uppercase letter, one lowercase letter, one number'
             ),
 
-        password2: Yup.string().oneOf(
-            [Yup.ref('password'), null],
-            'Passwords must match'
-        ),
+        password2: Yup.string()
+            .oneOf([Yup.ref('password'), null], 'Passwords must match')
+            .required('Confirm Password is required'),
     });
 
     return (
@@ -68,12 +69,24 @@ const RegistrationForm = () => {
                 onSubmit={({ username, password, email }, { resetForm }) => {
                     dispatchEvent(
                         registerUserThunk({ username, password, email })
-                    );
+                    ).unwrap()
+                    .then(data => {
+                      resetForm();
+                      toast.success(
+                        `${data.user.username}, welcome to Money Guard!!!`
+                      );
+                    })
+                    .catch(error => {
+                      toast.error(error.message[0]);
+                    });
                     resetForm();
                 }}
             >
                 {formik => (
-                    <RegFormStyled onSubmit={formik.handleSubmit}>
+                    <RegFormStyled
+                        onSubmit={formik.handleSubmit}
+                        autoComplete="off"
+                    >
                         <LogoStyled>
                             <img
                                 src={Logotip}
@@ -88,7 +101,11 @@ const RegistrationForm = () => {
                                 <Field
                                     as={TextField}
                                     InputProps={{
-                                        inputProps: { style: { color: 'white', stroke: "none" } ,
+                                        inputProps: {
+                                            style: {
+                                                color: 'white',
+                                                stroke: 'none',
+                                            },
                                         },
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -98,14 +115,20 @@ const RegistrationForm = () => {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66", marginBottom: "20px", paddingLeft: "13px"  }}
+                                    style={{
+                                        width: '100%',
+                                        color: 'white',
+                                        borderBottom: '1px solid #ffffff66',
+                                        marginBottom: '20px',
+                                        paddingLeft: '13px',
+                                    }}
                                     variant="standard"
                                     name="email"
                                     type="email"
                                     label=""
                                     htmlFor="email"
                                     placeholder="E-mail"
-                                    autoComplete="email"
+                                    autoComplete="off"
                                     onChange={formik.handleChange}
                                     error={Boolean(formik.errors.email)}
                                     helperText={
@@ -117,7 +140,11 @@ const RegistrationForm = () => {
                                 <Field
                                     as={TextField}
                                     InputProps={{
-                                        inputProps: { style: { color: 'white', stroke: "none" } ,
+                                        inputProps: {
+                                            style: {
+                                                color: 'white',
+                                                stroke: 'none',
+                                            },
                                         },
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -127,26 +154,36 @@ const RegistrationForm = () => {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66", marginBottom: "20px", paddingLeft: "13px" }}
+                                    style={{
+                                        width: '100%',
+                                        color: 'white',
+                                        borderBottom: '1px solid #ffffff66',
+                                        marginBottom: '20px',
+                                        paddingLeft: '13px',
+                                    }}
                                     variant="standard"
                                     name="password"
                                     type="password"
                                     label=""
                                     htmlFor="password"
                                     placeholder="Password"
-                                    autoComplete="new-password"
+                                    autoComplete="off"
                                     onChange={formik.handleChange}
                                     error={Boolean(formik.errors.password)}
                                     helperText={
                                         formik.errors.password &&
-                                        'Password must contain at least 6 and up to 12 characters'
+                                        'Password must contain one uppercase letter, one lowercase letter, one number'
                                     }
                                 />
 
                                 <Field
                                     as={TextField}
                                     InputProps={{
-                                        inputProps: { style: { color: 'white', stroke: "none" } ,
+                                        inputProps: {
+                                            style: {
+                                                color: 'white',
+                                                stroke: 'none',
+                                            },
                                         },
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -156,14 +193,19 @@ const RegistrationForm = () => {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66", paddingLeft: "13px" }}
+                                    style={{
+                                        width: '100%',
+                                        color: 'white',
+                                        borderBottom: '1px solid #ffffff66',
+                                        paddingLeft: '13px',
+                                    }}
                                     variant="standard"
                                     name="password2"
                                     type="password"
                                     label=""
                                     htmlFor="password2"
                                     placeholder="Confirm password"
-                                    autoComplete="new-password"
+                                    autoComplete="off"
                                     onChange={formik.handleChange}
                                     error={Boolean(
                                         formik.errors.confirmPassword
@@ -187,7 +229,11 @@ const RegistrationForm = () => {
                                 <Field
                                     as={TextField}
                                     InputProps={{
-                                        inputProps: { style: { color: 'white', stroke: "none" } ,
+                                        inputProps: {
+                                            style: {
+                                                color: 'white',
+                                                stroke: 'none',
+                                            },
                                         },
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -197,10 +243,16 @@ const RegistrationForm = () => {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66", marginBottom: "40px", paddingLeft: "13px" }}
+                                    style={{
+                                        width: '100%',
+                                        color: 'white',
+                                        borderBottom: '1px solid #ffffff66',
+                                        marginBottom: '40px',
+                                        paddingLeft: '13px',
+                                    }}
                                     variant="standard"
                                     name="username"
-                                    autoComplete="username"
+                                    autoComplete="off"
                                     type="text"
                                     label=""
                                     htmlFor="username"
@@ -218,7 +270,11 @@ const RegistrationForm = () => {
                                 <Field
                                     as={TextField}
                                     InputProps={{
-                                        inputProps: { style: { color: 'white', stroke: "none" } ,
+                                        inputProps: {
+                                            style: {
+                                                color: 'white',
+                                                stroke: 'none',
+                                            },
                                         },
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -228,11 +284,17 @@ const RegistrationForm = () => {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66", marginBottom: "20px", paddingLeft: "12px"}}
+                                    style={{
+                                        width: '100%',
+                                        color: 'white',
+                                        borderBottom: '1px solid #ffffff66',
+                                        marginBottom: '10px',
+                                        paddingLeft: '12px',
+                                    }}
                                     variant="standard"
                                     name="username"
                                     className="username"
-                                    autoComplete="username"
+                                    autoComplete="off"
                                     type="text"
                                     label=""
                                     htmlFor="username"
@@ -248,7 +310,11 @@ const RegistrationForm = () => {
                                 <Field
                                     as={TextField}
                                     InputProps={{
-                                        inputProps: { style: { color: 'white', stroke: "none" } ,
+                                        inputProps: {
+                                            style: {
+                                                color: 'white',
+                                                stroke: 'none',
+                                            },
                                         },
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -258,14 +324,20 @@ const RegistrationForm = () => {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66", marginBottom: "20px", paddingLeft: "12px" }}
+                                    style={{
+                                        width: '100%',
+                                        color: 'white',
+                                        borderBottom: '1px solid #ffffff66',
+                                        marginBottom: '10px',
+                                        paddingLeft: '12px',
+                                    }}
                                     variant="standard"
                                     name="email"
                                     type="email"
                                     label=""
                                     htmlFor="email"
                                     placeholder="E-mail"
-                                    autoComplete="email"
+                                    autoComplete="off"
                                     onChange={formik.handleChange}
                                     error={Boolean(formik.errors.email)}
                                     helperText={
@@ -277,7 +349,11 @@ const RegistrationForm = () => {
                                 <Field
                                     as={TextField}
                                     InputProps={{
-                                        inputProps: { style: { color: 'white', stroke: "none" } ,
+                                        inputProps: {
+                                            style: {
+                                                color: 'white',
+                                                stroke: 'none',
+                                            },
                                         },
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -287,26 +363,37 @@ const RegistrationForm = () => {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66", marginBottom: "20px", paddingLeft: "12px"  }}
+                                    style={{
+                                        width: '100%',
+                                        color: 'white',
+                                        borderBottom: '1px solid #ffffff66',
+                                        marginBottom: '10px',
+                                        paddingLeft: '12px',
+                                    }}
                                     variant="standard"
                                     name="password"
                                     type="password"
                                     label=""
                                     htmlFor="password"
                                     placeholder="Password"
-                                    autoComplete="new-password"
+                                    autoComplete="off"
                                     onChange={formik.handleChange}
                                     error={Boolean(formik.errors.password)}
                                     helperText={
                                         formik.errors.password &&
                                         'Password must contain at least 6 and up to 12 characters'
                                     }
+                                
                                 />
 
                                 <Field
                                     as={TextField}
                                     InputProps={{
-                                        inputProps: { style: { color: 'white', stroke: "none" } ,
+                                        inputProps: {
+                                            style: {
+                                                color: 'white',
+                                                stroke: 'none',
+                                            },
                                         },
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -316,14 +403,20 @@ const RegistrationForm = () => {
                                             </InputAdornment>
                                         ),
                                     }}
-                                    style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66", paddingLeft: "12px"  }}
+                                    style={{
+                                        width: '100%',
+                                        color: 'white',
+                                        borderBottom: '1px solid #ffffff66',
+                                        paddingLeft: '12px',
+                                        outline: 'green',
+                                    }}
                                     variant="standard"
                                     name="password2"
                                     type="password"
                                     label=""
                                     htmlFor="password2"
                                     placeholder="Confirm password"
-                                    autoComplete="new-password"
+                                    autoComplete="off"
                                     onChange={formik.handleChange}
                                     error={Boolean(
                                         formik.errors.confirmPassword
@@ -366,4 +459,3 @@ const RegistrationForm = () => {
     );
 };
 export default RegistrationForm;
-

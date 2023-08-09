@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useSelector } from 'react-redux';
 import { selectUserData } from 'redux/selectors';
 import { useDispatch } from 'react-redux';
+import { toast } from "react-toastify";
 import { logOutUserThunk } from 'redux/auth/userThunks';
 // import logo from "../../assests/images/symbol-defs.svg#icon-logo_MoneyGuard";
 
@@ -13,7 +14,8 @@ function Header() {
     const dispatch = useDispatch();
 
     const handleLogout = () => {
-        dispatch(logOutUserThunk());
+        dispatch(logOutUserThunk())
+        toast.success("You logged out is successfully.");
     };
 
     return (

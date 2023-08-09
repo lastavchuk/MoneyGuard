@@ -41,8 +41,6 @@ const SideCurrency = () => {
         }
     }, []);
 
-    console.log(dataCurrency);
-
     return (
         <>
             <Category>
