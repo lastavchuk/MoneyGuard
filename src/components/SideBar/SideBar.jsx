@@ -5,13 +5,12 @@ import {
     MainContainer,
     UpperContainer,
     DownContainer,
-    ElipceOne,
-    ElipceTwo,
     Graphics,
-    Line
+    Line,
 } from './SideBar.styled';
 
 const SideBar = () => {
+
     return (
         <MainContainer>
             <UpperContainer>
@@ -20,12 +19,9 @@ const SideBar = () => {
             </UpperContainer>
             <DownContainer>
                 <SideCurrency />
-                <ElipceTwo />
-                <Graphics>
-                    <Line />
-                </Graphics>
+                <Graphics />
+                <Line />
             </DownContainer>
-            <ElipceOne />
         </MainContainer>
     );
 };

@@ -1,9 +1,22 @@
 import styled from 'styled-components';
 
 export const BalanceDiv = styled.div`
-    background: var(--balance-background-color);
-    box-shadow: 1px 9px 15px rgba(0, 0, 0, 0.2);
-    padding: 8px 0 11px 56px;
+    @media screen and (min-width: 320px) {
+    }
+
+    @media screen and (min-width: 768px) {
+        background: var(--balance-background-color);
+        box-shadow: 1px 9px 15px rgba(0, 0, 0, 0.2);
+        padding: 8px 0 11px 40px;
+        border-radius: 8px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        background: var(--balance-background-color);
+        box-shadow: 1px 9px 15px rgba(0, 0, 0, 0.2);
+        padding: 8px 0 11px 56px;
+        border-radius: 0;
+    }
 `;
 
 export const BalanceText = styled.p`
