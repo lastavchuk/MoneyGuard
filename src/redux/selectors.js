@@ -7,6 +7,7 @@ export const selectCategories = state => state.finance.categories;
 
 export const selectIsModalAddTransactionOpen = state =>
     state.global.isModalAddTransactionOpen;
+export const selectIsModalLogoutOpen = state => state.global.isModalLogoutOpen;
 export const selectModalData = state => state.global.modalData;
 
 // export const selectIncomeSummary = state => state.transaction.incomeSummary;

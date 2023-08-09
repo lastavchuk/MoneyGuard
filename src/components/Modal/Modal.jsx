@@ -11,7 +11,7 @@ import { useEffect } from 'react';
 
 const modalContainer = document.getElementById('modal');
 
-export const Modal = ({ children, closeReducer }) => {
+export const Modal = ({ children, modalLogout, closeReducer }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -38,7 +38,7 @@ export const Modal = ({ children, closeReducer }) => {
 
     return createPortal(
         <Backdrop onClick={onCloseModal}>
-            <ModalStyled>
+            <ModalStyled modalLogout={modalLogout}>
                 <IconCloseModal onClick={handleCloseModal}>
                     <ExitModalBtn />
                 </IconCloseModal>
@@ -51,5 +51,6 @@ export const Modal = ({ children, closeReducer }) => {
 
 Modal.propTypes = {
     children: PropTypes.node.isRequired,
+    modalLogout: PropTypes.bool.isRequired,
     closeReducer: PropTypes.func.isRequired,
 };

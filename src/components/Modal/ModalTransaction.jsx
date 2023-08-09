@@ -20,7 +20,7 @@ import {
     StyledLabelWrapper,
     StyledField,
     StyledForm,
-} from './ModaAddlTransaction.styled';
+} from './ModalTransaction.styled';
 import { useCategoriesType } from 'hooks/categoriesFilter';
 import { modalTransactionsSchema } from 'services/validation/validationTransactions';
 import { FormError } from 'components/FormError/FormError';
@@ -33,7 +33,7 @@ import {
 let initialValues;
 let textButton = 'ADD';
 
-export const ModalAddTransaction = () => {
+export const ModalTransaction = () => {
     const modalData = useSelector(selectModalData);
 
     const dispatch = useDispatch();
