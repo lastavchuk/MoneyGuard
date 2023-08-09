@@ -14,9 +14,8 @@ import {
     selectIsModalAddTransactionOpen,
     selectUserData,
 } from 'redux/selectors';
-import { ModalAddTransaction } from 'components/ModaAddlTransaction/ModaAddlTransaction';
 import { Modal } from 'components/Modal/Modal';
-// import { ModalAddTransaction } from 'components/ModaAddlTransaction/ModaAddlTransaction';
+import { ModalTransaction } from 'components/Modal/ModalTransaction';
 
 function Home() {
     const dispatch = useDispatch();
@@ -49,7 +48,7 @@ function Home() {
             />
             {isModalOpen && (
                 <Modal closeReducer={closeModalAddTransaction}>
-                    <ModalAddTransaction />
+                    <ModalTransaction />
                 </Modal>
             )}
         </main>
