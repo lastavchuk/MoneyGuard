@@ -1,10 +1,13 @@
-import { CustomSelect } from 'components/CustomSelect/CustomSelect';
-import { Button } from 'components/Button/Button';
-import { Formik } from 'formik';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModalAddTransaction } from 'redux/globalSlice';
 import { selectCategories, selectModalData } from 'redux/selectors';
+
+import { Button } from 'components/Button/Button';
+import { FormError } from 'components/FormError/FormError';
+import { CustomSelect } from 'components/CustomSelect/CustomSelect';
+import { Formik } from 'formik';
+
 import {
     ButtonWrapper,
     InputWrapper,
@@ -21,10 +24,9 @@ import {
     StyledField,
     StyledForm,
 } from './ModalTransaction.styled';
+import { toast } from 'react-toastify';
 import { useCategoriesType } from 'hooks/categoriesFilter';
 import { modalTransactionsSchema } from 'services/validation/validationTransactions';
-import { FormError } from 'components/FormError/FormError';
-import { toast } from 'react-toastify';
 import {
     createTransactionThunk,
     updTransactionThunk,
@@ -101,13 +103,7 @@ export const ModalTransaction = () => {
                         data.type.charAt(0) + data.type.slice(1).toLowerCase()
                     } transaction ${
                         !modalData ? 'added to' : 'updated in'
-                    } your list.`,
-                    {
-                        autoClose: 2000,
-                        pauseOnFocusLoss: true,
-                        pauseOnHover: true,
-                        theme: 'light',
-                    }
+                    } your list.`
                 )
             )
             .catch(error =>
