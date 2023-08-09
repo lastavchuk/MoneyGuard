@@ -59,52 +59,36 @@ function Header() {
                                     fill="#FFB627"
                                     d="M17.069 3.089c-1.664-.398-3.327-1.194-4.575-2.387-1.247 1.193-2.91 1.989-4.574 2.387.416 3.58 1.664 5.966 4.574 7.955 2.911-1.989 4.575-4.376 4.575-7.955Z"
                                 />
-                                <path
-                                    fill="#FBFBFB"
-                                    d="M15.405 17.899 3.762 4.773v6.364l9.148 9.944 2.495-3.182ZM16.653 16.706l4.99-5.569V5.171l-7.9 8.75 2.91 2.785ZM17.069 18.695v3.58l4.574-5.171v-3.58l-4.574 5.17ZM8.336 18.695l-4.574-5.171v3.58l4.574 5.17v-3.58Z"
-                                />
-                            </g>
-                            <defs>
-                                <clipPath id="a">
-                                    <path
-                                        fill="#fff"
-                                        d="M.958 0h23.489v22.468H.957z"
-                                    />
-                                </clipPath>
-                            </defs>
-                        </svg>
-                    )}
-                    <p>Money Guard</p>
-                </div>
-                <span>{userData?.username}</span>
-                <button onClick={handleLogout}>
-                    <IoExitOutline
-                        style={
-                            isMobile
-                                ? {
-                                      width: 18,
-                                      height: 18,
-                                      verticalAlign: 'sub',
-                                      transform: 'scaleY(1.4)',
-                                  }
-                                : {
-                                      width: 18,
-                                      height: 18,
-                                      verticalAlign: 'sub',
-                                      marginRight: '8px',
-                                      transform: 'scaleY(1.4)',
-                                  }
-                        }
-                    />
-                    {isMobile ? '' : 'Exit'}
-                </button>
-            </StyledHeader>
-            {isModalOpen && (
-                <Modal closeReducer={closeModalLogout}>
-                    <ModalLogout />
-                </Modal>
-            )}
-        </>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                )}
+                <p>Money Guard</p>
+            </div>
+            <span>{userData?.username}</span>
+            <button onClick={handleLogout}>
+                <IoExitOutline
+                    style={
+                        isMobile
+                            ? {
+                                  width: 18,
+                                  height: 18,
+                                  verticalAlign: 'sub',
+                                  transform: 'scaleY(1.4)',
+                              }
+                            : {
+                                  width: 18,
+                                  height: 18,
+                                  verticalAlign: 'sub',
+                                  marginRight: '8px',
+                                  transform: 'scaleY(1.4)',
+                              }
+                    }
+                />
+                {isMobile ? '' : 'Exit'}
+            </button>
+            <span className='animation'></span>
+        </StyledHeader>
     );
 }
 

@@ -1,26 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
-import { StyledSelectors } from './StatisticsSelect.styled';
+import { StyledSelectors, selectStyles } from './StatisticsSelect.styled';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFinanceData, selectUserIsAuth } from 'redux/selectors';
 
 import { getSummaryTransactionThunk } from 'redux/finance/financeThunks';
-
-const optionsMonth = [
-    { value: 1, label: 'January' },
-    { value: 2, label: 'February' },
-    { value: 3, label: 'March' },
-    { value: 4, label: 'April' },
-    { value: 5, label: 'May' },
-    { value: 6, label: 'June' },
-    { value: 7, label: 'July' },
-    { value: 8, label: 'August' },
-    { value: 9, label: 'September' },
-    { value: 10, label: 'October' },
-    { value: 11, label: 'November' },
-    { value: 12, label: 'December' },
-];
+import { optionsMonth } from 'services/helpers';
 
 const StatisticsSelect = () => {
     const isAuth = useSelector(selectUserIsAuth);
@@ -74,7 +60,8 @@ const StatisticsSelect = () => {
     return (
         <StyledSelectors>
             <Select
-                name="month"
+                // name="month"
+                styles={selectStyles}
                 value={getMonth()}
                 onChange={onChangeMonth}
                 classNamePrefix="react-select"
@@ -82,7 +69,8 @@ const StatisticsSelect = () => {
                 placeholder={optionsMonth[currentMonth].label}
             />
             <Select
-                name="year"
+                // name="year"
+                styles={selectStyles}
                 value={getYear()}
                 onChange={onChangeYear}
                 classNamePrefix="react-select"

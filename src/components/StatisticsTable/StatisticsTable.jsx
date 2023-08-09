@@ -5,10 +5,12 @@ import {
     StyledStatisticsTotal,
 } from './StatisticsTable.styled';
 import { useSelector } from 'react-redux';
-import { selectSummary } from 'redux/selectors';
+import { selectExpenseSummary, selectIncomeSummary } from 'redux/selectors';
+import { colors } from 'services/helpers';
 
-const StatisticsTable = () => {
-    const summary = useSelector(selectSummary);
+const StatisticsTable = ({ expenseCategories }) => {
+    const incomeSummary = useSelector(selectIncomeSummary);
+    const expenseSummary = useSelector(selectExpenseSummary);
 
     return (
         <StyledStatisticsTable>
@@ -18,18 +20,20 @@ const StatisticsTable = () => {
             </div>
 
             <StyledStatisticsList>
-                {!!summary &&
-                    summary.categoriesSummary.map((category, id) => {
-                        console.log(id);
+                {!!expenseCategories &&
+                    expenseCategories.map((category, id) => {
                         return (
                             <div key={id}>
                                 <li>
-                                    <div className="category-color"></div>
+                                    <div
+                                        style={{ backgroundColor: colors[id] }}
+                                        className="category-color"
+                                    ></div>
                                     <p className="category-item">
                                         {category.name}
                                     </p>
                                     <p className="category-sum">
-                                        {category.total}
+                                        {Number(category.total).toFixed(2) * -1}
                                     </p>
                                 </li>
                                 <div className="gradient"></div>
@@ -37,19 +41,19 @@ const StatisticsTable = () => {
                         );
                     })}
                 <StyledStatisticsTotal>
-                    {!!summary && summary.expenseSummary !== 0 && (
+                    {!!expenseSummary && expenseSummary !== 0 && (
                         <li>
                             <p className="total-item">Expenses:</p>
                             <p className="total-sum-exp">
-                                {summary.expenseSummary}
+                                {Number(expenseSummary).toFixed(2) * -1}
                             </p>
                         </li>
                     )}
-                    {!!summary && summary.incomeSummary !== 0 && (
+                    {!!incomeSummary && incomeSummary !== 0 && (
                         <li>
                             <p className="total-item">Income:</p>
                             <p className="total-sum-inc">
-                                {summary.incomeSummary}
+                                {Number(incomeSummary).toFixed(2)}
                             </p>
                         </li>
                     )}
