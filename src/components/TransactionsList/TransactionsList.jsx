@@ -5,7 +5,10 @@ import { useMediaQuery } from 'react-responsive';
 import { selectCategories } from 'redux/selectors';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-import { delTransactionThunk } from 'redux/finance/financeThunks';
+import {
+    delTransactionThunk,
+    getSummaryTransactionThunk,
+} from 'redux/finance/financeThunks';
 
 function TransactionsList({
     transactions,
@@ -53,6 +56,7 @@ function TransactionsList({
             .catch(error =>
                 toast.error('Something went wrong, please try again!')
             );
+        dispatch(getSummaryTransactionThunk({}));
     }
 
     return (
