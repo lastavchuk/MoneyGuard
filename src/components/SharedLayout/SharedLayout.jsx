@@ -1,17 +1,32 @@
 import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
+import { Outlet, useLocation } from 'react-router-dom';
+
 import { StyledSharedLayout } from './SharedLayout.styled';
+
 import Loader from 'components/Loader/Loader';
 import Header from 'components/Header/Header';
 import SideBar from 'components/SideBar/SideBar';
 import Footer from 'components/Footer/Footer';
+import SideNav from 'components/SideBar/SideNav/SideNav';
+import SideBalance from 'components/SideBar/SideBalance/SideBalance';
 
 function SharedLayout() {
+    const location = useLocation();
+    const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+
     return (
         <StyledSharedLayout>
             <Header />
             <div className="container">
-                <SideBar />
+                {location.pathname === '/statistics' && isMobile && <SideNav />}
+                {location.pathname === '/' && isMobile && (
+                    <>
+                        <SideNav />
+                        <SideBalance />
+                    </>
+                )}
+                {!isMobile && <SideBar />}
                 <Suspense fallback={<Loader />}>
                     <Outlet />
                 </Suspense>
