@@ -18,7 +18,7 @@ function HomeTab({ onOpenModal, onEditTransaction, onDeleteTransaction }) {
                 />
             )}
             {transactions?.length === 0 && (
-                <p className="animationText">Add transaction</p>
+                <p className="animationText">Let's get started!</p>
             )}
             <button className="add" onClick={() => onOpenModal()}>
                 <AiOutlinePlus />
