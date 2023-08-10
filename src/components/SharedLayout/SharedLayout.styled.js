@@ -14,6 +14,7 @@ export const StyledSharedLayout = styled.div`
     background-position: center;
     background-size: cover;
     background-color: var(--background);
+    position: relative;
 
     @media (min-device-pixel-ratio: 2),
         (min-resolution: 192dpi),
@@ -22,6 +23,7 @@ export const StyledSharedLayout = styled.div`
     }
 
     @media only screen and (max-width: 767px) {
+        padding-bottom: 60px; 
         main {
             padding: 12px 0 45px;
         }
