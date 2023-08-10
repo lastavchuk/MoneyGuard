@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
 import { useMediaQuery } from 'react-responsive';
@@ -13,18 +13,11 @@ import Loader from './Loader/Loader';
 import SharedLayout from './SharedLayout/SharedLayout';
 import Notification from './Notification/Notification';
 
-import Home from 'pages/Home';
-import SummaryPage from 'pages/SummaryPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
-
-import Currency from 'pages/Currency';
-// const Home = lazy(() => import('../pages/Home'));
-// const SummaryPage = lazy(() => import('../pages/SummaryPage'));
-// const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
-// const RegistrationPage = lazy(() =>
-//     import('../pages/RegistrationPage/RegistrationPage')
-// );
+const Home = lazy(() => import('pages/Home'));
+const Currency = lazy(() => import('pages/Currency'));
+const SummaryPage = lazy(() => import('pages/SummaryPage'));
 
 export const App = () => {
     const dispatch = useDispatch();
