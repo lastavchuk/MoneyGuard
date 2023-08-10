@@ -29,6 +29,7 @@ import { useCategoriesType } from 'hooks/categoriesFilter';
 import { modalTransactionsSchema } from 'services/validation/validationTransactions';
 import {
     createTransactionThunk,
+    getSummaryTransactionThunk,
     updTransactionThunk,
 } from 'redux/finance/financeThunks';
 
@@ -110,6 +111,7 @@ export const ModalTransaction = () => {
                 toast.error('1Something went wrong, please try again!')
             );
         dispatch(closeModalAddTransaction());
+        dispatch(getSummaryTransactionThunk({}));
     };
 
     const handleChangeSelect = item => {
