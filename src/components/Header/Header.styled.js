@@ -23,16 +23,12 @@ export const StyledHeader = styled.header`
 
     svg {
         display: inline-block;
-        /* height: 22px;
-  width: 23px;
-  stroke-width: 0;
-  stroke: currentColor;
-  fill: currentColor; */
+        
     }
 
     span {
         margin-right: 8px;
-        color: var(--white-60);
+        /* color: var(--white-60); */
     }
 
     button {

@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 
 import { Field, Formik } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
+
 import { Button, NavBtn } from '../Registration/RegistrationFormStyled';
-import { LogContainer, LogFormStyled, LogotipStyled} from './LoginFormStyled';
+import { LogContainer, LogFormStyled, LogotipStyled } from './LoginFormStyled';
 
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
@@ -14,7 +16,6 @@ import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 
 import Logotip from '../../../assests/img/logo.svg';
-
 
 const LoginForm = () => {
     const dispatchEvent = useDispatch();
@@ -41,8 +42,17 @@ const LoginForm = () => {
                 initialValues={{ email: '', password: '' }}
                 validationSchema={validationSchema}
                 onSubmit={(values, { resetForm }) => {
-                    dispatchEvent(loginUserThunk(values));
-                    resetForm();
+                    dispatchEvent(loginUserThunk(values))
+                        .unwrap()
+                        .then(data => {
+                            resetForm();
+                            toast.success(
+                                `${data.user.username}! You have successfully logged in.`
+                            );
+                        })
+                        .catch(error => {
+                            toast.error(error.message[0]);
+                        });
                 }}
             >
                 {formik => (
@@ -59,54 +69,72 @@ const LoginForm = () => {
                         <Field
                             as={TextField}
                             InputProps={{
-                                inputProps: { style: { color: 'white', stroke: "none" } },
+                                inputProps: {
+                                    style: { color: 'white', stroke: 'none' },
+                                },
                                 startAdornment: (
                                     <InputAdornment position="start">
                                         <EmailIcon style={{ color: 'grey' }} />
                                     </InputAdornment>
                                 ),
                             }}
-                            style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66", marginBottom: "40px", paddingLeft: "10px"}}
+                            style={{
+                                width: '100%',
+                                color: 'white',
+                                borderBottom: '1px solid #ffffff66',
+                                marginBottom: '40px',
+                                paddingLeft: '10px',
+                            }}
                             variant="standard"
                             name="email"
                             type="email"
                             label=""
                             placeholder="E-mail"
-                            autoComplete="email"
+                            autoComplete="off"
                             onChange={formik.handleChange}
                             error={Boolean(formik.errors.email)}
                             helperText={
                                 formik.errors.email &&
-                                'Please enter a valid email address'
+                                'Please enter your email address'
                             }
                         />
 
                         <Field
                             as={TextField}
                             InputProps={{
-                                inputProps: { style: { color: 'white', stroke: "none" } },
+                                inputProps: {
+                                    style: { color: 'white', stroke: 'none' },
+                                },
                                 startAdornment: (
                                     <InputAdornment position="start">
                                         <LockIcon style={{ color: 'grey' }} />
                                     </InputAdornment>
                                 ),
                             }}
-                            style={{ width: '100%', color: 'white', borderBottom: "1px solid #ffffff66", paddingLeft: "10px", marginBottom: "40px" }}
+                            style={{
+                                width: '100%',
+                                color: 'white',
+                                borderBottom: '1px solid #ffffff66',
+                                paddingLeft: '10px',
+                                marginBottom: '40px',
+                            }}
                             variant="standard"
                             name="password"
                             type="password"
                             label=""
                             placeholder="Password"
-                            autoComplete="new-password"
+                            autoComplete="off"
                             onChange={formik.handleChange}
                             error={Boolean(formik.errors.password)}
                             helperText={
                                 formik.errors.password &&
-                                'Please enter your valid password'
+                                'Please enter your password'
                             }
                         />
 
-                        <Button type="submit" className='login'>LOG IN</Button>
+                        <Button type="submit" className="login">
+                            LOG IN
+                        </Button>
 
                         <Link to="/register">
                             <NavBtn>REGISTER</NavBtn>
