@@ -1,4 +1,4 @@
-import { lazy, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
 
@@ -13,13 +13,16 @@ import SharedLayout from './SharedLayout/SharedLayout';
 import SideCurrency from './SideBar/SideCurrency/SideCurrency';
 import { Graphics, Line } from './SideBar/SideBar.styled';
 import Notification from './Notification/Notification';
-
-const Home = lazy(() => import('../pages/Home'));
-const SummaryPage = lazy(() => import('../pages/SummaryPage'));
-const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
-const RegistrationPage = lazy(() =>
-    import('../pages/RegistrationPage/RegistrationPage')
-);
+import Home from 'pages/Home';
+import SummaryPage from 'pages/SummaryPage';
+import LoginPage from 'pages/LoginPage/LoginPage';
+import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
+// const Home = lazy(() => import('../pages/Home'));
+// const SummaryPage = lazy(() => import('../pages/SummaryPage'));
+// const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
+// const RegistrationPage = lazy(() =>
+//     import('../pages/RegistrationPage/RegistrationPage')
+// );
 
 export const App = () => {
     const dispatch = useDispatch();
