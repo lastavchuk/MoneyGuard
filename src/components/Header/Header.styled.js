@@ -28,7 +28,7 @@ export const StyledHeader = styled.header`
 
     span {
         margin-right: 8px;
-        /* color: var(--white-60); */
+        color: var(--white-60);
     }
 
     button {
