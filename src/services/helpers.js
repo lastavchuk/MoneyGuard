@@ -1,5 +1,5 @@
 import { fetchAllTransactions } from './api/api';
-import { getMonoCurrency, getPrivatCurrency } from './api/apiCurrency';
+import { getMonoCurrency } from './api/apiCurrency';
 
 export const optionsMonth = [
     { value: 1, label: 'January' },
@@ -49,10 +49,10 @@ export async function getAllYears() {
 function parseMono(arr) {
     const rez = [
         {
-            currency: 'usd',
+            currency: 'USD',
         },
         {
-            currency: 'eur',
+            currency: 'EUR',
         },
     ];
 
@@ -63,46 +63,46 @@ function parseMono(arr) {
 
     return rez;
 }
-function parsePrivat(arr) {
-    const rez = [
-        {
-            currency: 'usd',
-        },
-        {
-            currency: 'eur',
-        },
-    ];
+// function parsePrivat(arr) {
+//     const rez = [
+//         {
+//             currency: 'USD',
+//         },
+//         {
+//             currency: 'EUR',
+//         },
+//     ];
 
-    let i = 1;
-    arr.forEach(el => {
-        rez[i].buy = el.buy.slice(0, 5);
-        rez[i].sell = el.sale.slice(0, 5);
-        i--;
-    });
+//     let i = 1;
+//     arr.forEach(el => {
+//         rez[i].buy = el.buy.slice(0, 5);
+//         rez[i].sell = el.sale.slice(0, 5);
+//         i--;
+//     });
 
-    return rez;
-}
+//     return rez;
+// }
 
 export async function getCurrency() {
-    try {
-        const data = await getMonoCurrency();
-        return parseMono(data.slice(0, 2));
-    } catch (error) {
-        try {
-            return parsePrivat(await getPrivatCurrency());
-        } catch (error) {
-            return [
-                {
-                    currency: 'usd',
-                    buy: 0,
-                    sell: 0,
-                },
-                {
-                    currency: 'eur',
-                    buy: 0,
-                    sell: 0,
-                },
-            ];
-        }
-    }
+    // try {
+    const data = await getMonoCurrency();
+    return parseMono(data.slice(0, 2));
+    // } catch (error) {
+    //     try {
+    //         return parsePrivat(await getPrivatCurrency());
+    //     } catch (error) {
+    //         return [
+    //             {
+    //                 currency: 'USD',
+    //                 buy: 0,
+    //                 sell: 0,
+    //             },
+    //             {
+    //                 currency: 'EUR',
+    //                 buy: 0,
+    //                 sell: 0,
+    //             },
+    //         ];
+    //     }
+    // }
 }
