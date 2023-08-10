@@ -106,9 +106,7 @@ export const ModalTransaction = () => {
                     } your list.`
                 )
             )
-            .catch(error =>
-                toast.error('Something went wrong, please try again!')
-            );
+            .catch(toast.error('Something went wrong, please try again!'));
         dispatch(closeModalAddTransaction());
     };
 
