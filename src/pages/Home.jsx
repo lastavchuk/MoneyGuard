@@ -10,6 +10,7 @@ import {
     getTransactionCategoriesThunk,
     delTransactionThunk,
     fetchAllTransactionsThunk,
+    getSummaryTransactionThunk,
 } from 'redux/finance/financeThunks';
 
 import {
@@ -30,6 +31,7 @@ function Home() {
         if (userData) {
             dispatch(fetchAllTransactionsThunk());
             dispatch(getTransactionCategoriesThunk());
+            dispatch(getSummaryTransactionThunk({}));
         }
     }, [dispatch, userData]);
 
