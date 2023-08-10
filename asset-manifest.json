@@ -1,7 +1,13 @@
 {
   "files": {
     "main.css": "/MoneyGuard/static/css/main.5558840a.css",
-    "main.js": "/MoneyGuard/static/js/main.bcc11abc.js",
+    "main.js": "/MoneyGuard/static/js/main.789ce8ef.js",
+    "static/js/664.621c56c1.chunk.js": "/MoneyGuard/static/js/664.621c56c1.chunk.js",
+    "static/js/27.4e261a37.chunk.js": "/MoneyGuard/static/js/27.4e261a37.chunk.js",
+    "static/js/752.68800e30.chunk.js": "/MoneyGuard/static/js/752.68800e30.chunk.js",
+    "static/js/557.38efdc8a.chunk.js": "/MoneyGuard/static/js/557.38efdc8a.chunk.js",
+    "static/js/549.42510461.chunk.js": "/MoneyGuard/static/js/549.42510461.chunk.js",
+    "static/js/395.a86922f7.chunk.js": "/MoneyGuard/static/js/395.a86922f7.chunk.js",
     "static/media/ellipse_19desk@2x.png": "/MoneyGuard/static/media/ellipse_19desk@2x.c6591c8b5c89a687cd08.png",
     "static/media/home_desk@2x.webp": "/MoneyGuard/static/media/home_desk@2x.c088581319e44a942dc4.webp",
     "static/media/gradient_tab@2x.webp": "/MoneyGuard/static/media/gradient_tab@2x.4640f6cafb84f3f47d53.webp",
@@ -28,10 +34,16 @@
     "index.html": "/MoneyGuard/index.html",
     "static/media/logo.svg": "/MoneyGuard/static/media/logo.dbc52635efdf8219ee1a2f3c5f17f1d2.svg",
     "main.5558840a.css.map": "/MoneyGuard/static/css/main.5558840a.css.map",
-    "main.bcc11abc.js.map": "/MoneyGuard/static/js/main.bcc11abc.js.map"
+    "main.789ce8ef.js.map": "/MoneyGuard/static/js/main.789ce8ef.js.map",
+    "664.621c56c1.chunk.js.map": "/MoneyGuard/static/js/664.621c56c1.chunk.js.map",
+    "27.4e261a37.chunk.js.map": "/MoneyGuard/static/js/27.4e261a37.chunk.js.map",
+    "752.68800e30.chunk.js.map": "/MoneyGuard/static/js/752.68800e30.chunk.js.map",
+    "557.38efdc8a.chunk.js.map": "/MoneyGuard/static/js/557.38efdc8a.chunk.js.map",
+    "549.42510461.chunk.js.map": "/MoneyGuard/static/js/549.42510461.chunk.js.map",
+    "395.a86922f7.chunk.js.map": "/MoneyGuard/static/js/395.a86922f7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.5558840a.css",
-    "static/js/main.bcc11abc.js"
+    "static/js/main.789ce8ef.js"
   ]
 }
