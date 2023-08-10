@@ -28,6 +28,7 @@ export const StyledHomeTab = styled.div`
         -webkit-text-fill-color: transparent;
         background-clip: text;
         animation: gradientMove 2s linear infinite;
+        text-align: center;
     }
 
     @media only screen and (min-width: 768px) {
@@ -39,7 +40,6 @@ export const StyledHomeTab = styled.div`
 
         p.animationText {
             font-size: 45px;
-            text-align: center;
         }
     }
 
@@ -48,6 +48,7 @@ export const StyledHomeTab = styled.div`
         padding: 46px 16px 46px 69px;
         p.animationText {
             font-size: 52px;
+            text-align: left;
         }
     }
 `;

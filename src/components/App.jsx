@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router';
+import { useMediaQuery } from 'react-responsive';
 
 import PrivateRoute from 'guards/PrivateRoute';
 import PublicRoute from 'guards/PublicRoute';
@@ -10,13 +11,14 @@ import { selectLoading, selectUserToken } from 'redux/selectors';
 import Loader from './Loader/Loader';
 
 import SharedLayout from './SharedLayout/SharedLayout';
-import SideCurrency from './SideBar/SideCurrency/SideCurrency';
-import { Graphics, Line } from './SideBar/SideBar.styled';
 import Notification from './Notification/Notification';
+
 import Home from 'pages/Home';
 import SummaryPage from 'pages/SummaryPage';
 import LoginPage from 'pages/LoginPage/LoginPage';
 import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
+
+import Currency from 'pages/Currency';
 // const Home = lazy(() => import('../pages/Home'));
 // const SummaryPage = lazy(() => import('../pages/SummaryPage'));
 // const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
@@ -26,9 +28,11 @@ import RegistrationPage from 'pages/RegistrationPage/RegistrationPage';
 
 export const App = () => {
     const dispatch = useDispatch();
+    const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
 
     const isLoading = useSelector(selectLoading);
     const token = useSelector(selectUserToken);
+
     useEffect(() => {
         if (!token) return;
         dispatch(refreshUserThunk());
@@ -66,16 +70,16 @@ export const App = () => {
                             </PrivateRoute>
                         }
                     />
-                    <Route
-                        path="currency"
-                        element={
-                            <PrivateRoute>
-                                <SideCurrency />
-                                <Graphics />
-                                <Line />
-                            </PrivateRoute>
-                        }
-                    />
+                    {isMobile && (
+                        <Route
+                            path="currency"
+                            element={
+                                <PrivateRoute>
+                                    <Currency />
+                                </PrivateRoute>
+                            }
+                        />
+                    )}
                 </Route>
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
