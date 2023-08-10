@@ -6,17 +6,16 @@ import Header from 'components/Header/Header';
 import SideBar from 'components/SideBar/SideBar';
 import Footer from 'components/Footer/Footer';
 
-
 function SharedLayout() {
     return (
         <StyledSharedLayout>
             <Header />
-            <div className='container'>
+            <div className="container">
                 <SideBar />
-            <Suspense fallback={<Loader />}>
+                <Suspense fallback={<Loader />}>
                     <Outlet />
-            </Suspense>
-                </div>
+                </Suspense>
+            </div>
             <Footer />
         </StyledSharedLayout>
     );
