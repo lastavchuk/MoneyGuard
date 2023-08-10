@@ -4,6 +4,7 @@ import { selectFinanceData } from 'redux/selectors';
 import { AiOutlinePlus } from 'react-icons/ai';
 import PropTypes from 'prop-types';
 import TransactionsList from 'components/TransactionsList/TransactionsList';
+import sprite from "../../assests/images/symbol-defs.svg"
 
 // const transactions = [
 //     {
@@ -81,16 +82,20 @@ import TransactionsList from 'components/TransactionsList/TransactionsList';
 
 function HomeTab({ onOpenModal, onEditTransaction, onDeleteTransaction }) {
     const transactions = useSelector(selectFinanceData);
-    
 
- return (
+    return (
         <StyledHomeTab>
-            {transactions && (
+            {transactions?.length > 0 && (
                 <TransactionsList
                     transactions={transactions}
                     onEditTransaction={onEditTransaction}
                     onDeleteTransaction={onDeleteTransaction}
                 />
+            )}
+            {transactions?.length === 0 && (
+                <p className="animationText">
+                    Add transaction
+                </p>
             )}
             <button className="add" onClick={() => onOpenModal()}>
                 <AiOutlinePlus />
@@ -103,6 +108,6 @@ HomeTab.propTypes = {
     onOpenModal: PropTypes.func.isRequired,
     onEditTransaction: PropTypes.func.isRequired,
     onDeleteTransaction: PropTypes.func.isRequired,
-  };
+};
 
 export default HomeTab;
