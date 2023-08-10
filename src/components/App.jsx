@@ -10,9 +10,9 @@ import { selectLoading, selectUserToken } from 'redux/selectors';
 import Loader from './Loader/Loader';
 
 import SharedLayout from './SharedLayout/SharedLayout';
+import SideCurrency from './SideBar/SideCurrency/SideCurrency';
+import { Graphics, Line } from './SideBar/SideBar.styled';
 import Notification from './Notification/Notification';
-import Currency from 'pages/Currency';
-import { useMediaQuery } from 'react-responsive';
 
 const Home = lazy(() => import('../pages/Home'));
 const SummaryPage = lazy(() => import('../pages/SummaryPage'));
@@ -23,8 +23,6 @@ const RegistrationPage = lazy(() =>
 
 export const App = () => {
     const dispatch = useDispatch();
-
-    const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
 
     const isLoading = useSelector(selectLoading);
     const token = useSelector(selectUserToken);
@@ -65,14 +63,16 @@ export const App = () => {
                             </PrivateRoute>
                         }
                     />
-                  {isMobile &&  <Route
+                    <Route
                         path="currency"
                         element={
                             <PrivateRoute>
-                              <Currency/>
+                                <SideCurrency />
+                                <Graphics />
+                                <Line />
                             </PrivateRoute>
                         }
-                    />} 
+                    />
                 </Route>
                 <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
