@@ -6,11 +6,17 @@ export const StyledFooter = styled.footer`
     justify-content: center;
     align-items: center;
     /* position: absolute; */
-    bottom: 0;
     width: 100%;
+    bottom: 10px;
+    position: absolute;
+    svg{
+        vertical-align: bottom;
+        margin-left: 5px;
+    }
 
+    
+    
     @media only screen and (min-width: 768px) {
-        position: absolute;
         font-size: 17px;
     }
     
