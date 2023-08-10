@@ -10,11 +10,13 @@ import {
     Title,
 } from './ModalLogout.styled';
 import Logotip from '../../assests/img/logo.svg';
+import { toast } from 'react-toastify';
 
 export const ModalLogout = () => {
     const dispatch = useDispatch();
 
     const handleLogOut = () => {
+        toast.success('You logged out is successfully.');
         dispatch(logOutUserThunk());
         dispatch(closeModalLogout());
     };
