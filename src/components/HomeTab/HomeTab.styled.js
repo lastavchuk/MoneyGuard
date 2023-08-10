@@ -39,7 +39,7 @@ export const StyledHomeTab = styled.div`
 
         p.animationText {
             font-size: 45px;
-            text-align: center;
+            text-align: left;
         }
     }
 
