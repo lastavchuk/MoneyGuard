@@ -50,7 +50,9 @@ function TransactionsList({
                     'The transaction has been removed from your list.'
                 )
             )
-            .catch(toast.error('Something went wrong, please try again!'));
+            .catch(error =>
+                toast.error('Something went wrong, please try again!')
+            );
     }
 
     return (
